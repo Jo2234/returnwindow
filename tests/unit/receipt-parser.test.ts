@@ -5,7 +5,7 @@ import { demo, now, receiptText, simple } from './helpers';
 it('P1 DMY ambiguous', () => expect(parseDateToken('08/10/2026')).toEqual({ date: '2026-10-08', format: 'DMY', ambiguous: true }));
 it('P2 unambiguous DMY', () => expect(parseDateToken('25/10/2026')).toEqual({ date: '2026-10-25', format: 'DMY', ambiguous: false }));
 it.each(['2026-10-08', '8 Oct 2026', 'Oct 8, 2026', '08/10/26', '08-10-2026', '08.10.2026', '8 October 2026'])('P3 supported token %s', raw => expect(parseDateToken(raw)?.date).toBe('2026-10-08'));
-it.each(['31/02/2026', '00/10/2026'])('P4 invalid token %s', raw => expect(parseDateToken(raw)).toBeNull());
+it.each(['31/02/2026', '00/10/2026', 'Octopus 8, 2026'])('P4 invalid token %s', raw => expect(parseDateToken(raw)).toBeNull());
 it('P5 actual repaired token and parsed field carry check flag', () => { expect(parseDateToken('O8/1O/2026')?.date).toBe('2026-10-08'); expect(parseReceipt(documentFromText('JUNIPER LANE GOODS\nOrder date: O8/1O/2026\nShirt 12.00')).purchaseDate).toMatchObject({ value: '2026-10-08', needsCheck: true, note: 'Some characters were guessed' }); });
 it.each([['1O.90', 1090, true], ['45.90', 4590, false], ['S$12.00', 1200, false]] as const)('P6 amount %s', (raw, cents, repaired) => expect(parseAmount(raw)).toEqual({ cents, repaired }));
 it('P7 demo items exclude totals and payment; preserve exact descriptions/amounts', () => {

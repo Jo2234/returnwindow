@@ -52,7 +52,7 @@ function anchorFor(text: string, span: TextSpan): PolicyClause['anchor'] {
 export function analysePolicy(label: string, input: string, capturedOn: CivilDate, sha256: string): PolicyDoc {
     const text = input.replace(/\r\n?/g, '\n'), clauses: PolicyClause[] = [];
     const add = (clause: Omit<PolicyClause, 'id'>) => clauses.push({ id: `c${clauses.length + 1}`, ...clause });
-    function analyse(start: number, end: number, maySplit = true): void {
+    function analyse(start: number, end: number, maySplit = true, inheritedReturn = false): void {
         const span = makeSpan(text, start, end), scope = scopeFor(text, span), anchor = anchorFor(text, span);
         const exclusion = /\b(?:final sale|non-returnable|not eligible for (?:a\s+)?return|cannot be returned|no returns|not returnable)\b/i.test(span.text);
         if (exclusion) {
@@ -63,7 +63,7 @@ export function analysePolicy(label: string, input: string, capturedOn: CivilDat
                 add({ span, kind: 'exclusion', window: null, anchor, scope });
             return;
         }
-        if (!/\b(?:returns?|returned|refunds?|exchange)\b/i.test(span.text))
+        if (!inheritedReturn && !/\b(?:returns?|returned|refunds?|exchange)\b/i.test(span.text))
             return;
         const matches = [...span.text.matchAll(windowPattern)];
         if (matches.some(m => m[2] && Number(m[2]) !== (numbers[m[1]!.toLowerCase()] ?? Number(m[1]))))
@@ -83,7 +83,7 @@ export function analysePolicy(label: string, input: string, capturedOn: CivilDat
                     let e = edges[i + 1]!;
                     while (e > edges[i]! && /[\s,]/.test(text[e - 1]!))
                         e--;
-                    analyse(edges[i]!, e, false);
+                    analyse(edges[i]!, e, false, true);
                 }
                 return;
             }

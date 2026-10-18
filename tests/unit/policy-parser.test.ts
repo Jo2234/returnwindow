@@ -56,3 +56,11 @@ it('duplicate identical windows use the first; category outranks default; exclus
     const s = simple('All other items return within 60 days of purchase. Apparel return within 30 days of purchase. Apparel return within 30 days of purchase.');
     expect(computeCase(s, now).items[0]!.outcome).toMatchObject({ status: 'computed', deadline: '2026-11-07', clauseId: 'c2' });
 });
+it('separate category phrases split multiple windows; unsplit competing windows conflict', () => {
+    const p = policy('Returns: apparel within 30 days of purchase, footwear within 14 days of purchase.');
+    expect(p.clauses).toHaveLength(2);
+    expect(p.clauses[0]).toMatchObject({ window: { amount: 30 }, scope: { type: 'categories', categories: ['apparel'] }, anchor: { value: 'purchase' } });
+    expect(p.clauses[1]).toMatchObject({ window: { amount: 14 }, scope: { type: 'categories', categories: ['footwear'] }, anchor: { value: 'purchase' } });
+    const s = simple('Return apparel within 30 days or 14 days of purchase.');
+    expect(computeCase(s, now).items[0]!.outcome).toEqual({ status: 'conflict', clauseIds: ['c1', 'c2'] });
+});

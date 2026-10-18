@@ -9,7 +9,7 @@ export function extractedField<T>(value: T | null, confidence = 100, lineIndex: 
     return { value, confidence, lineIndex, raw, origin: 'extracted', needsCheck: confidence < 70, note: confidence < 70 ? 'Low reading confidence' : null };
 }
 const repair = (s: string) => s.replace(/[OoIlS]/g, c => ({ O: '0', o: '0', I: '1', l: '1', S: '5' })[c]!);
-const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 export function parseDateToken(raw: string): {
     date: CivilDate;
     format: 'DMY' | 'YMD' | 'MONTH_NAME';
@@ -43,7 +43,8 @@ export function parseDateToken(raw: string): {
         if (!a && !b)
             return null;
         d = Number(a?.[1] ?? b![2]);
-        m = months.indexOf((a?.[2] ?? b![1]!).slice(0, 3).toLowerCase()) + 1;
+        const month = (a?.[2] ?? b![1]!).toLowerCase();
+        m = months.findIndex(name => name === month || name.slice(0, 3) === month) + 1;
         y = Number(a?.[3] ?? b![3]);
         format = 'MONTH_NAME';
     }

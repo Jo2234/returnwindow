@@ -5,8 +5,12 @@ import { parseCivilDate } from '../../src/domain/civil-date';
 import { documentFromText, extractedField, parseReceipt } from '../../src/domain/receipt-parser';
 import { emptyCase } from '../../src/state/case-store';
 import type { CaseState, CivilDate } from '../../src/domain/types';
-export const civil = (s: string): CivilDate => { const d = parseCivilDate(s); if (!d)
-    throw new Error(`Bad test date ${s}`); return d; };
+export const civil = (s: string): CivilDate => {
+    const d = parseCivilDate(s);
+    if (!d)
+        throw new Error(`Bad test date ${s}`);
+    return d;
+};
 export const policyText = readFileSync(new URL('../../fixtures/policies/policy-demo.txt', import.meta.url), 'utf8');
 export const receiptText = readFileSync(new URL('../../fixtures/receipts/receipt-demo.txt', import.meta.url), 'utf8');
 export const now = new Date('2026-10-20T04:00:00Z');
