@@ -15,10 +15,13 @@ import { ItemCard } from './ui/ItemCard';
 import { ReceiptPanel } from './ui/ReceiptPanel';
 import { QuestionCard } from './ui/QuestionCard';
 import { PolicyInputs, TextInputs } from './ui/TextInputs';
+import { EvidenceView, ExportActions } from './ui/Exports';
 export default function App() {
     const simulated = parseCivilDate(new URLSearchParams(location.search).get('today') ?? '');
     const now = () => simulated ? new Date(`${simulated}T04:00:00Z`) : new Date();
-    const [store, dispatch] = useCaseStore(now());
+    const [store, dispatch, persistence] = useCaseStore(now());
+    const [evidenceOpen, setEvidenceOpen] = useState(location.hash === '#evidence');
+    useEffect(() => { const update = () => setEvidenceOpen(location.hash === '#evidence'); window.addEventListener('hashchange', update); return () => window.removeEventListener('hashchange', update); }, []);
     const [receiptText, setReceiptText] = useState(''), [policyText, setPolicyText] = useState('');
     const [label, setLabel] = useState('Store return policy'), [captured, setCaptured] = useState(todayInSingapore(now()));
     const [error, setError] = useState(''), [flash, setFlash] = useState<string | null>(null), [showChanges, setShowChanges] = useState(false);
@@ -30,6 +33,7 @@ export default function App() {
     useEffect(()=>()=>{extraction.current.id++;extraction.current.controller?.abort();if(extraction.current.imageUrl)URL.revokeObjectURL(extraction.current.imageUrl);},[]);
     const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { case: state, result, previousResult } = store;
+    useEffect(() => { if (persistence.restored) { setPolicyText(state.policy?.text ?? ''); setLabel(state.policy?.label ?? 'Store return policy'); setCaptured(state.policy?.capturedOn ?? todayInSingapore(now())); setReceiptText(state.receiptOcr?.lines.map(line => line.text).join('\n') ?? ''); } }, [persistence.restored]);
     const editingClause = state.policy?.clauses.find(c => `clock:${c.id}` === editingQuestionId);
     const activeQuestion = editingClause ? questionFor(editingClause, state.receipt?.items.filter(i => result.items.some(r => r.itemId === i.id && 'clauseId' in r.outcome && r.outcome.clauseId === editingClause.id)) ?? [], state.receipt?.purchaseDate.value ?? null) : result.questions[0];
     const changedCount = result.items.filter(r => { const previous = previousResult?.items.find(p => p.itemId === r.itemId); return previous && JSON.stringify(previous.outcome) !== JSON.stringify(r.outcome); }).length;
@@ -196,18 +200,21 @@ export default function App() {
         setError('');
         setFlash(null);
         setEditingQuestionId(null);
+        history.replaceState(null, '', location.pathname + location.search); setEvidenceOpen(false);
     } }
     const policyInputs = { text: policyText, onText: setPolicyText, label, onLabel: setLabel, captured, onCaptured: setCaptured, onFile: (file: File | undefined, policy: boolean) => void readText(file, policy) };
+    if (evidenceOpen && state.receipt) return <EvidenceView state={state} result={result} now={now()} imageUrl={receiptImage} onBack={() => { history.replaceState(null, '', location.pathname + location.search); setEvidenceOpen(false); }}/>;
     return <>
     <header><strong>ReturnWindow</strong>{simulated && <span className="chip">Simulated today: {formatLong(simulated)}</span>}{state.sample && <span className="chip">Synthetic sample</span>}</header>
-    <main>
+    <main id="main-content">
+      {persistence.storageWarning && <p role="status" className="refusal">{persistence.storageWarning}</p>}
       {error && <p role="alert" className="refusal">{error}</p>}
       {reading?<section className="panel" aria-label="Reading receipt">{receiptImage&&<img src={receiptImage} alt="Receipt being read" style={{maxWidth:260,maxHeight:300}}/>}<p role="status">{reading.status} {Math.round(reading.progress*100)}%</p><progress aria-label="Receipt reading progress" value={reading.progress} max={1}/><button onClick={cancelReading}>Cancel</button><label>Replace receipt<input data-receipt-file type="file" accept="image/png,image/jpeg,image/webp,application/pdf,text/plain,.txt" onChange={e=>void readText(e.target.files?.[0],false)}/></label></section>:<>
       {failed&&<section className="panel refusal" role="alert" data-state="receipt_failed"><h2>{failed.message}</h2><button onClick={()=>document.querySelector<HTMLInputElement>('input[data-receipt-file]')?.click()}>Try another image</button><button onClick={pasteRecovery}>Paste the text instead</button><button onClick={()=>void load('',policyText)}>Enter details manually</button></section>}
       {!state.receipt ? <TextInputs receipt={receiptText} onReceipt={setReceiptText} onSubmit={() => void load(receiptText, policyText)} onSample={() => void sample()} policy={policyInputs}/> : <>
         {result.refusal && <div role="alert" className="refusal">{result.refusal.code === 'no_policy' ? "No policy, no deadline. Paste the store's return policy — ReturnWindow doesn't guess store rules." : result.refusal.code === 'no_window_in_policy' ? "We couldn't find a return window (like '30 days') in this text, so no deadlines are shown." : 'Add a receipt to see item deadlines.'}</div>}
         <div className="workspace">
-          <ReceiptPanel state={state} onCorrect={correct} onAddItem={addItem} imageUrl={receiptImage} onFile={file=>void readText(file,false)}/>
+          <ReceiptPanel state={state} onCorrect={correct} onAddItem={addItem} imageUrl={receiptImage} restored={persistence.restored} onFile={file=>void readText(file,false)}/>
           <section aria-label="Deadlines"><h2>Deadlines</h2>{activeQuestion && <QuestionCard key={`${activeQuestion.id}:${editingQuestionId ?? ''}`} question={activeQuestion} count={editingClause ? 1 : result.questions.length} onAnswer={answer}/>}
             {result.items.map(r => <ItemCard key={r.itemId} item={state.receipt!.items.find(i => i.id === r.itemId)!} result={r} previous={showChanges ? previousResult?.items.find(p => p.itemId === r.itemId) : undefined} refused={!!result.refusal} onCategory={value => { const error = correct({ field: 'item.category', itemId: r.itemId }, value); if (error)
             setError(error); }} onPassage={showPassage}/>)}
@@ -216,7 +223,7 @@ export default function App() {
         </div>
         <div aria-live="polite" className="announcement">{showChanges && changedCount > 0 ? `${changedCount} ${changedCount === 1 ? 'deadline' : 'deadlines'} updated` : ''}</div>
         <details className="panel changes"><summary>Changes ({state.corrections.length}) and answers</summary>{state.corrections.map(c => <p key={c.id}>{c.target.field}: {c.from ?? 'Not provided'} → {c.to}</p>)}{state.answers.map(a => <p key={a.questionId}>{a.questionId}: {a.choice} <button className="subtle" onClick={() => { setEditingQuestionId(a.questionId); }}>Change answer</button></p>)}</details>
-        <p className="convention">{DATE_CONVENTION}</p><div className="actions"><button disabled title="Coming in a later slice">Download reminders (.ics) (coming in a later slice)</button><button disabled>Evidence pack (coming in a later slice)</button><button onClick={startOver}>Start over</button></div>
+        <ExportActions state={state} result={result} now={now()} onEvidence={() => { location.hash = 'evidence'; setEvidenceOpen(true); window.scrollTo(0, 0); }} onReset={startOver}/><details className="convention"><summary>How dates are counted</summary><p>{DATE_CONVENTION}</p></details>
       </>}
       </>}
     </main>
