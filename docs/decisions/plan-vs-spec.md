@@ -16,5 +16,7 @@ No other differences were found. The convention text, the acceptance dates, refu
 
 Addendum (from slot 1's Stage 0 report):
 
+| # | Topic | Plan says | Skill docs say | Decision |
+|---|---|---|---|---|
 | 6 | Days-left example | §6 example "in 16 days" | PRD acceptance: shirt 7 Nov with today 20 Oct = 18 days | Plan example corrected to "in 18 days" (the §10.2 table already says 18) |
 | 7 | Run-log wording | — | `docs/process/skill-pack-run-log.md` inventory marks 1-start…4-spec as "Executed (5-build planning only)" | Wording slip: 1-start to 4-spec were executed fully, and only 5-build stopped after planning. Slot 1 corrects it in Stage S4 |
