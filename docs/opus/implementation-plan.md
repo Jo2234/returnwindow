@@ -729,3 +729,14 @@ Timeboxes: S0 ≤ 3 h; S1 ≤ 8 h; S2 ≤ 6 h; S3 ≤ 8 h; S4 ≤ 2 h.
 5. Johan records and uploads the video (public on YouTube/Vimeo).
 6. Johan makes the GitHub repo public (the relay remains private until then), checks the LICENSE is shown in About, and checks the history for private context.
 7. Johan registers on Devpost (if not already) and submits before **Tue 27 Oct 2026 05:00 SGT**.
+
+
+## Operational amendment — 18 October 2026 (GPT-6 Astra HIGH)
+
+The original plan and G1/G2 reviews were authored by Claude Opus 5.5 HIGH. After the confirmed manual reset, this same lead thread received a new `usage_limit`; the authorized fallback is now Codex GPT-6 Astra HIGH for specification/review/coordination only. This is not the final judging/submission review. Implementation remains GPT-6.1 Sol HIGH.
+
+S1 is merged at `40aa504664afbf920f8a584237c4a44595f3318d`, identical in tree content to approved `9ad61f54792a51aa3036db3111ad27b9d56958a0`. Slot 1 reports frozen install, typecheck, 113/113 unit tests and 49/49 tests in each of UTC, America/Los_Angeles and Pacific/Kiritimati on that merge.
+
+To preserve and reuse existing worker IDs, Stage S2 (originally slot 3) is assigned to existing slot 2, thread `799a8508-1724-429f-bcaf-1b1ed7324dfe`, on new branch `codex/slot2-ocr` in its existing clean worktree. S2 file ownership and acceptance criteria are unchanged. Slot 1 remains the integrator. Only one Basics worker may run. Later stages should likewise reuse existing workers where practical.
+
+`control/HEAVY-TASK-PROTOCOL.md` supersedes every older statement calling a full suite light or permitting work based only on machine load. All full suites, production builds, fixture/browser rendering, OCR integration runs, E2E and model evaluations require a unique explicit reservation from master thread `4fa0a3e9-3624-4fdd-abf3-e663d61799d6`. A queue entry is not permission. Drafting and small targeted checks may continue. The master alone writes the reservation file; no new scheduler/heartbeat/monitor.
