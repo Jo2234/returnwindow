@@ -1,0 +1,614 @@
+{
+  "synthetic": true,
+  "engine": "tesseract.js",
+  "version": "7.0.0",
+  "lang": "eng",
+  "langDataVersion": "@tesseract.js-data/eng@1.0.0/4.0.0",
+  "recordedAt": "2026-10-18T05:00:48.466Z",
+  "uptime": "13:00  up 9 days,  1:44, 3 users, load averages: 2.96 3.10 4.51",
+  "wallMs": 854,
+  "imageSha256": "5b2716e9f0e0e59c0622e7db45e72479eabf8f920ae1647901221124b64b2ad4",
+  "imageSize": {
+    "width": 600,
+    "height": 800
+  },
+  "text": "JUNIPER LANE GOODS\n\n12 Example Lane, Singapore 000000\n\nTAX INVOICE\n\nOrder date: 05/10/2026 14:32\nSOUND-ONE Wireless Earbuds       89.00\nLinen Shirt (M)              45.90\nStoneware Mug                   18.50\nWool Scarf CLEARANCE FINAL SALE 12.00\nSUBTOTAL                     165.40\nGST 9% incl.                 13.66\nTOTAL                       165.40\nVISA ***%0000                 165.40\nThank you!\n",
+  "lines": [
+    {
+      "text": "JUNIPER LANE GOODS\n",
+      "confidence": 96,
+      "bbox": {
+        "x0": 43,
+        "y0": 41,
+        "x1": 235,
+        "y1": 58
+      },
+      "words": [
+        {
+          "text": "JUNIPER",
+          "confidence": 96,
+          "bbox": {
+            "x0": 43,
+            "y0": 41,
+            "x1": 117,
+            "y1": 54
+          }
+        },
+        {
+          "text": "LANE",
+          "confidence": 95,
+          "bbox": {
+            "x0": 129,
+            "y0": 44,
+            "x1": 170,
+            "y1": 56
+          }
+        },
+        {
+          "text": "GOODS",
+          "confidence": 95,
+          "bbox": {
+            "x0": 183,
+            "y0": 45,
+            "x1": 235,
+            "y1": 58
+          }
+        }
+      ]
+    },
+    {
+      "text": "12 Example Lane, Singapore 000000\n",
+      "confidence": 96,
+      "bbox": {
+        "x0": 43,
+        "y0": 73,
+        "x1": 396,
+        "y1": 94
+      },
+      "words": [
+        {
+          "text": "12",
+          "confidence": 96,
+          "bbox": {
+            "x0": 43,
+            "y0": 73,
+            "x1": 61,
+            "y1": 85
+          }
+        },
+        {
+          "text": "Example",
+          "confidence": 96,
+          "bbox": {
+            "x0": 74,
+            "y0": 74,
+            "x1": 148,
+            "y1": 90
+          }
+        },
+        {
+          "text": "Lane,",
+          "confidence": 96,
+          "bbox": {
+            "x0": 161,
+            "y0": 76,
+            "x1": 209,
+            "y1": 91
+          }
+        },
+        {
+          "text": "Singapore",
+          "confidence": 96,
+          "bbox": {
+            "x0": 226,
+            "y0": 77,
+            "x1": 320,
+            "y1": 94
+          }
+        },
+        {
+          "text": "000000",
+          "confidence": 96,
+          "bbox": {
+            "x0": 334,
+            "y0": 80,
+            "x1": 396,
+            "y1": 94
+          }
+        }
+      ]
+    },
+    {
+      "text": "TAX INVOICE\n",
+      "confidence": 96,
+      "bbox": {
+        "x0": 41,
+        "y0": 105,
+        "x1": 158,
+        "y1": 119
+      },
+      "words": [
+        {
+          "text": "TAX",
+          "confidence": 96,
+          "bbox": {
+            "x0": 41,
+            "y0": 105,
+            "x1": 72,
+            "y1": 117
+          }
+        },
+        {
+          "text": "INVOICE",
+          "confidence": 96,
+          "bbox": {
+            "x0": 85,
+            "y0": 106,
+            "x1": 158,
+            "y1": 119
+          }
+        }
+      ]
+    },
+    {
+      "text": "Order date: 05/10/2026 14:32",
+      "confidence": 92,
+      "bbox": {
+        "x0": 40,
+        "y0": 137,
+        "x1": 351,
+        "y1": 157
+      },
+      "words": [
+        {
+          "text": "Order",
+          "confidence": 96,
+          "bbox": {
+            "x0": 40,
+            "y0": 137,
+            "x1": 92,
+            "y1": 150
+          }
+        },
+        {
+          "text": "date:",
+          "confidence": 96,
+          "bbox": {
+            "x0": 105,
+            "y0": 139,
+            "x1": 154,
+            "y1": 152
+          }
+        },
+        {
+          "text": "05/10/2026",
+          "confidence": 80,
+          "bbox": {
+            "x0": 170,
+            "y0": 140,
+            "x1": 275,
+            "y1": 155
+          }
+        },
+        {
+          "text": "14:32",
+          "confidence": 96,
+          "bbox": {
+            "x0": 300,
+            "y0": 144,
+            "x1": 351,
+            "y1": 157
+          }
+        }
+      ]
+    },
+    {
+      "text": "SOUND-ONE Wireless Earbuds       89.00",
+      "confidence": 95,
+      "bbox": {
+        "x0": 39,
+        "y0": 169,
+        "x1": 458,
+        "y1": 191
+      },
+      "words": [
+        {
+          "text": "SOUND-ONE",
+          "confidence": 92,
+          "bbox": {
+            "x0": 39,
+            "y0": 169,
+            "x1": 135,
+            "y1": 183
+          }
+        },
+        {
+          "text": "Wireless",
+          "confidence": 96,
+          "bbox": {
+            "x0": 147,
+            "y0": 172,
+            "x1": 231,
+            "y1": 186
+          }
+        },
+        {
+          "text": "Earbuds",
+          "confidence": 95,
+          "bbox": {
+            "x0": 244,
+            "y0": 175,
+            "x1": 318,
+            "y1": 188
+          }
+        },
+        {
+          "text": "89.00",
+          "confidence": 96,
+          "bbox": {
+            "x0": 407,
+            "y0": 178,
+            "x1": 458,
+            "y1": 191
+          }
+        }
+      ]
+    },
+    {
+      "text": "Linen Shirt (M)              45.90",
+      "confidence": 93,
+      "bbox": {
+        "x0": 38,
+        "y0": 201,
+        "x1": 457,
+        "y1": 223
+      },
+      "words": [
+        {
+          "text": "Linen",
+          "confidence": 96,
+          "bbox": {
+            "x0": 38,
+            "y0": 201,
+            "x1": 90,
+            "y1": 214
+          }
+        },
+        {
+          "text": "Shirt",
+          "confidence": 89,
+          "bbox": {
+            "x0": 103,
+            "y0": 203,
+            "x1": 155,
+            "y1": 215
+          }
+        },
+        {
+          "text": "(M)",
+          "confidence": 89,
+          "bbox": {
+            "x0": 172,
+            "y0": 205,
+            "x1": 195,
+            "y1": 218
+          }
+        },
+        {
+          "text": "45.90",
+          "confidence": 96,
+          "bbox": {
+            "x0": 406,
+            "y0": 211,
+            "x1": 457,
+            "y1": 223
+          }
+        }
+      ]
+    },
+    {
+      "text": "Stoneware Mug                   18.50",
+      "confidence": 96,
+      "bbox": {
+        "x0": 38,
+        "y0": 233,
+        "x1": 456,
+        "y1": 255
+      },
+      "words": [
+        {
+          "text": "Stoneware",
+          "confidence": 96,
+          "bbox": {
+            "x0": 38,
+            "y0": 233,
+            "x1": 133,
+            "y1": 247
+          }
+        },
+        {
+          "text": "Mug",
+          "confidence": 96,
+          "bbox": {
+            "x0": 145,
+            "y0": 236,
+            "x1": 177,
+            "y1": 251
+          }
+        },
+        {
+          "text": "18.50",
+          "confidence": 96,
+          "bbox": {
+            "x0": 406,
+            "y0": 242,
+            "x1": 456,
+            "y1": 255
+          }
+        }
+      ]
+    },
+    {
+      "text": "Wool Scarf CLEARANCE FINAL SALE 12.00",
+      "confidence": 91,
+      "bbox": {
+        "x0": 36,
+        "y0": 265,
+        "x1": 456,
+        "y1": 287
+      },
+      "words": [
+        {
+          "text": "Wool",
+          "confidence": 96,
+          "bbox": {
+            "x0": 36,
+            "y0": 265,
+            "x1": 78,
+            "y1": 277
+          }
+        },
+        {
+          "text": "Scarf",
+          "confidence": 96,
+          "bbox": {
+            "x0": 91,
+            "y0": 267,
+            "x1": 143,
+            "y1": 279
+          }
+        },
+        {
+          "text": "CLEARANCE",
+          "confidence": 96,
+          "bbox": {
+            "x0": 156,
+            "y0": 268,
+            "x1": 251,
+            "y1": 282
+          }
+        },
+        {
+          "text": "FINAL",
+          "confidence": 96,
+          "bbox": {
+            "x0": 264,
+            "y0": 271,
+            "x1": 316,
+            "y1": 284
+          }
+        },
+        {
+          "text": "SALE",
+          "confidence": 89,
+          "bbox": {
+            "x0": 329,
+            "y0": 273,
+            "x1": 370,
+            "y1": 285
+          }
+        },
+        {
+          "text": "12.00",
+          "confidence": 73,
+          "bbox": {
+            "x0": 405,
+            "y0": 274,
+            "x1": 456,
+            "y1": 287
+          }
+        }
+      ]
+    },
+    {
+      "text": "SUBTOTAL                     165.40",
+      "confidence": 94,
+      "bbox": {
+        "x0": 36,
+        "y0": 287,
+        "x1": 455,
+        "y1": 320
+      },
+      "words": [
+        {
+          "text": "SUBTOTAL",
+          "confidence": 96,
+          "bbox": {
+            "x0": 36,
+            "y0": 287,
+            "x1": 121,
+            "y1": 320
+          }
+        },
+        {
+          "text": "165.40",
+          "confidence": 92,
+          "bbox": {
+            "x0": 394,
+            "y0": 306,
+            "x1": 455,
+            "y1": 319
+          }
+        }
+      ]
+    },
+    {
+      "text": "GST 9% incl.                 13.66",
+      "confidence": 96,
+      "bbox": {
+        "x0": 35,
+        "y0": 329,
+        "x1": 454,
+        "y1": 351
+      },
+      "words": [
+        {
+          "text": "GST",
+          "confidence": 96,
+          "bbox": {
+            "x0": 35,
+            "y0": 329,
+            "x1": 66,
+            "y1": 341
+          }
+        },
+        {
+          "text": "9%",
+          "confidence": 96,
+          "bbox": {
+            "x0": 80,
+            "y0": 330,
+            "x1": 97,
+            "y1": 342
+          }
+        },
+        {
+          "text": "incl.",
+          "confidence": 94,
+          "bbox": {
+            "x0": 111,
+            "y0": 330,
+            "x1": 160,
+            "y1": 344
+          }
+        },
+        {
+          "text": "13.66",
+          "confidence": 96,
+          "bbox": {
+            "x0": 403,
+            "y0": 338,
+            "x1": 454,
+            "y1": 351
+          }
+        }
+      ]
+    },
+    {
+      "text": "TOTAL                       165.40",
+      "confidence": 96,
+      "bbox": {
+        "x0": 34,
+        "y0": 351,
+        "x1": 453,
+        "y1": 383
+      },
+      "words": [
+        {
+          "text": "TOTAL",
+          "confidence": 96,
+          "bbox": {
+            "x0": 34,
+            "y0": 351,
+            "x1": 87,
+            "y1": 383
+          }
+        },
+        {
+          "text": "165.40",
+          "confidence": 96,
+          "bbox": {
+            "x0": 392,
+            "y0": 370,
+            "x1": 453,
+            "y1": 383
+          }
+        }
+      ]
+    },
+    {
+      "text": "VISA ***%0000                 165.40",
+      "confidence": 79,
+      "bbox": {
+        "x0": 33,
+        "y0": 393,
+        "x1": 452,
+        "y1": 415
+      },
+      "words": [
+        {
+          "text": "VISA",
+          "confidence": 89,
+          "bbox": {
+            "x0": 33,
+            "y0": 393,
+            "x1": 76,
+            "y1": 405
+          }
+        },
+        {
+          "text": "***%0000",
+          "confidence": 51,
+          "bbox": {
+            "x0": 89,
+            "y0": 394,
+            "x1": 171,
+            "y1": 408
+          }
+        },
+        {
+          "text": "165.40",
+          "confidence": 96,
+          "bbox": {
+            "x0": 391,
+            "y0": 402,
+            "x1": 452,
+            "y1": 415
+          }
+        }
+      ]
+    },
+    {
+      "text": "Thank you!",
+      "confidence": 94,
+      "bbox": {
+        "x0": 33,
+        "y0": 425,
+        "x1": 136,
+        "y1": 442
+      },
+      "words": [
+        {
+          "text": "Thank",
+          "confidence": 94,
+          "bbox": {
+            "x0": 33,
+            "y0": 425,
+            "x1": 85,
+            "y1": 438
+          }
+        },
+        {
+          "text": "you!",
+          "confidence": 94,
+          "bbox": {
+            "x0": 98,
+            "y0": 427,
+            "x1": 136,
+            "y1": 442
+          }
+        }
+      ]
+    }
+  ]
+}

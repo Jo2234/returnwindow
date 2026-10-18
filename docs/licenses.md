@@ -1,6 +1,6 @@
 # ReturnWindow dependencies and local assets
 
-Status: installed-package metadata inspected; runtime OCR/PDF and CSP verification pending an explicit master grant. Full resolved metadata is in licenses.json, generated with `pnpm licenses list --json > docs/licenses.json`. The package script is invoked with `pnpm run licenses` because `pnpm licenses` selects pnpm's built-in command.
+Status: installed-package metadata inspected; local Node OCR and PDF-text integration verified under master grant heavy-basics-s2a-slot2-20261018-1258 (13/13 tests). Production CSP and browser origin/lifecycle checks remain pending a separate grant. Full resolved metadata is in licenses.json, generated with `pnpm licenses list --json > docs/licenses.json`. The package script is invoked with `pnpm run licenses` because `pnpm licenses` selects pnpm's built-in command.
 
 ## Direct dependencies
 
