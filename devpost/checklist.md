@@ -7,18 +7,18 @@ status: approved
 
 Build mode: fast
 
-Stage 0 plans only. No slice has been built or verified. Later workers follow this checklist and the detailed hand-computed tests in docs/opus/implementation-plan.md §10. All learner feedback is Johan's; agent verification must be recorded separately and must not tick a learner checkpoint.
+Stage 0 plans only. Slices 1–2 are being implemented by slot 2; verification records appear below. Later workers follow this checklist and the detailed hand-computed tests in docs/opus/implementation-plan.md §10. All learner feedback is Johan's; agent verification must be recorded separately and must not tick a learner checkpoint.
 
 ## Slices
 
-- [ ] **1. Paste a receipt and a policy and see per-item deadlines with highlighted passages**
+- [x] **1. Paste a receipt and a policy and see per-item deadlines with highlighted passages**
   Becomes usable: A local app accepts pasted receipt/policy text and shows item cards with separate supported dates, final-sale exclusion and exact numbered policy passages.
   Why now: Proves the distinctive evidence-backed date kernel immediately; bootstrapping is part of this usable flow. It gives later input and export work a tested baseline.
   PRD ref: `prd.md > The Core Journey` (steps 1–3), `prd.md > Receipt and Policy Input`, `prd.md > Per-Item Deadlines and Evidence`, `prd.md > Observable Acceptance Criteria`
   Spec ref: `spec.md > Where It Runs and How Someone Tries It`, `spec.md > Civil Dates — civil-date.ts`, `spec.md > Verified Spans — spans.ts`, `spec.md > Categories — categories.ts`, `spec.md > Receipt Parser — receipt-parser.ts`, `spec.md > Policy Parser — policy-parser.ts`, `spec.md > Clause Matcher — matcher.ts`, `spec.md > Outcome Engine — engine.ts`, `spec.md > Case Store — state/case-store.ts`, `spec.md > UI — App.tsx and ui/`, `spec.md > File Structure`
   Build: Scaffold pinned React/Vite/TypeScript, pnpm lock/config and capped Vitest setup. Implement plan §4 types and pure date/span/category/text-receipt/policy/matcher/engine modules, text fixtures exactly from §10.2, reducer and paste-text workspace with fields, cards and verified highlights. Keep the ambiguous electronics result visibly pending; interactive answers arrive in slice 2. Use minimal functional styling from the approved palette.
   Verify (mechanical): Run `pnpm typecheck`, `pnpm test` (maxWorkers ≤2) and `pnpm test:tz` for implemented date/parser/matcher/span/demo tests from plan §§10.1–10.4. Observe the text sample in a browser at 127.0.0.1:5188/?today=2026-10-20: shirt 7 Nov, mug 29 Oct, scarf not returnable, earbuds pending; Show passage reveals an exact quotation. Record commands/counts and agent browser result; stop the started server.
-  Learner check: Open the local app, paste the sample receipt and policy, inspect each item and Show passage, and report whether the dates and evidence are understandable. [JOHAN: hands-on check pending]. Agent-side equivalent is planned above; not performed in Stage 0.
+  Learner check: Open the local app, paste the sample receipt and policy, inspect each item and Show passage, and report whether the dates and evidence are understandable. [JOHAN: hands-on check pending]. Agent-side equivalent completed 18 Oct 2026: pnpm typecheck passed; pnpm test 80/80 (5 files); pnpm test:tz 44/44 (3 files) for each of UTC, America/Los_Angeles and Pacific/Kiritimati. T3 Playwright-backed preview at 127.0.0.1:5188/?today=2026-10-20 confirmed shirt Sat 7 Nov (18 days), mug Thu 29 Oct (9 days), scarf not returnable ③, earbuds waiting, and the visible simulated-today badge. Clicking shirt Show passage scrolled/flashed the exact c1 quotation. Screenshot: /tmp/basics-slot2-shots/slice1-workspace.png. Owned dev server and browser tab stopped. This brief interactive check used the existing shared T3 browser; production build remains gated behind the other project's heavyweight run.
   Commit: `feat: paste receipts and policies into evidence-backed item deadlines`
 
 - [ ] **2. Ambiguity asks one question; corrections recompute every deadline; refusals**
@@ -90,3 +90,5 @@ Activity mode: Not started.
 ## Revisions
 
 - 18 Oct 2026, slot 2 (S1, slices 1–2): scaffold and deterministic text kernel checkpoint. Exact §12 pins installed. Initial `pnpm install` failed with `ERR_PNPM_IGNORED_BUILDS` for esbuild; `pnpm approve-builds --help` documents positional package approval, and `pnpm approve-builds esbuild --yes` succeeded. It generated `pnpm-workspace.yaml` with only `allowBuilds.esbuild: true`; this necessary package-manager config is an addition to the slot's listed paths. The shell's pnpm launcher reports 12.14.0, but the project's packageManager setting runs pnpm 12.11.2 (confirmed by install output). `pnpm vitest --help` confirms `--maxWorkers`; scripts cap it at 2. Two initial typechecks failed (missing generic for empty delivery field; test callback narrowing); repaired without changing acceptance expectations. `pnpm typecheck` then passed; `pnpm test`: 80/80 in 5 files; `pnpm test:tz`: 44/44 in 3 files in each of UTC, America/Los_Angeles, Pacific/Kiritimati. Browser/build gated at 12:09 SGT: load 7.18/6.17/5.22, 54% free; Amazon Playwright running. Slice boxes remain unchecked until their browser mechanical checks pass. [JOHAN: hands-on check pending]
+
+- Slice 1 completed with the text sample and exact passage checked in the browser; the screenshot is temporary, uncommitted evidence. Fixtures contain LF with exactly one trailing newline, byte-exact to plan §10.2. No learner check claimed.
