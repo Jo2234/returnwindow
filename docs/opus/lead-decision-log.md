@@ -23,3 +23,11 @@ Author of this addendum: Codex GPT-6 Astra HIGH. Original entries above remain C
 - Reuse existing slot 2 for S2 OCR/PDF, preserving worker IDs and one-worker allocation. Assigned ownership is the plan's original slot 3 scope.
 - Adopted master-only heavyweight reservations for every new full suite/build/E2E/integration run. No heavy work has been started by this continuation.
 - Export the G2 checkpoint with honest status: text kernel locally verified; OCR/PDF, exports and polished full journey remain unfinished. Public release/submission and personal learner work remain Johan gates.
+
+
+## G3 acceptance and S3 readiness — GPT-6 Astra HIGH,18 October2026
+
+- G3 accepted23af618 after13 real OCR/adapter tests,113unit,3×49TZ,build and R1 browser pass; original B harness-format failure retained. Browser-testedcc05343/build-testedb360f10 differ from accepted head only in docs.
+- Master released R1 after independent cleanup. Same Sol slot2 marks mechanical slice3 complete; Johan checks remain pending. Existing slot1 integrates; later S3 reuses slot2, one at a time.
+- Reconciled calendar alarm timezone, verbatim store name, actual05→08 demo and reset/restore wording in plan-vs-spec decisions8–11 before S3 implementation.
+- No new heavy checks for an exact-content merge/doc-only changes; next changed app needs appropriate granted tests. No public release or submission.

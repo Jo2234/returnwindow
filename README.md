@@ -2,14 +2,22 @@
 
 ReturnWindow tells you the last day to return each item on a receipt and shows the exact supporting line from the store's supplied policy; it asks about ambiguity and refuses to guess.
 
-Status: G2 text kernel locally verified; OCR/PDF and export stages pending
+Status: G3 local OCR/PDF input verified; calendar/evidence exports, persistence and final polish pending
 
-The paste-text receipt/policy flow, per-item deadlines, uncertainty questions, evidence highlighting and corrections are implemented. The approved planning/build documents are:
+Receipt images now use real on-device English OCR; text-layer PDFs, pasted text and text files feed the same editable workspace. Per-item deadlines, uncertainty questions, evidence highlighting and corrections are implemented. On installation, the project's asset-copy step generates ignored `public/ocr/` worker/core/WASM/model files from installed packages. They are served from the app's own origin; the PDF worker is bundled locally. No CDN or remote OCR service is used.
+
+The actual synthetic messy receipt was read as **5 Oct 2026**, against ground truth **8 Oct 2026**. Correcting 05→08 changes the shirt deadline **4→7 Nov** and mug **26→29 Oct**; earbuds anchored to delivery on 10 Oct stay **24 Oct**. These are recorded observations from the fictional Juniper Lane Goods sample.
+
+The [G3 review](docs/checkpoints/g3-review.md) and [handoff](docs/checkpoints/g3-handoff.md) record the prior granted verification: frozen install/typecheck, 113 unit tests, 49 tests in each of three timezones, 13 OCR/adapter tests, production build and production browser walkthrough passed. Build-tested commit: `b360f1031ef65531794c60b4ded891e81e44d5be`; browser-tested commit: `cc0534311453a107f5588f429e387044682f582c`. Later commits changed documentation only. Browser evidence recorded 31 same-origin requests, zero external requests and zero console/page errors under the original production CSP; real image/PDF input, correction, blank-image recovery and cancellation/replacement passed. The earlier browser harness date-format failure is retained in the review history. This integration assignment reruns no app checks.
+
+Calendar/evidence exports, persistence, final visual polish, full final E2E/G4 and the S4 audit remain pending. The optional scanned-PDF browser path and a separate browser unmount scenario were not exercised. The long workspace and action-bar overlap need the planned polish pass. [Licence provenance flags](docs/licenses.md) for caniuse-lite CC-BY-4.0 data and the model-specific traineddata upstream notice remain open before public release.
+
+The approved planning/build documents are:
 
 - [Scope](devpost/scope.md)
 - [Product requirements](devpost/prd.md)
 - [Technical spec](devpost/spec.md)
-- [Build checklist](devpost/checklist.md) — fast mode; slices 1–2 implemented
+- [Build checklist](devpost/checklist.md) — fast mode; slices 1–3 mechanically complete, Johan hands-on checks pending
 
 ## How this was built
 

@@ -740,3 +740,14 @@ S1 is merged at `40aa504664afbf920f8a584237c4a44595f3318d`, identical in tree co
 To preserve and reuse existing worker IDs, Stage S2 (originally slot 3) is assigned to existing slot 2, thread `799a8508-1724-429f-bcaf-1b1ed7324dfe`, on new branch `codex/slot2-ocr` in its existing clean worktree. S2 file ownership and acceptance criteria are unchanged. Slot 1 remains the integrator. Only one Basics worker may run. Later stages should likewise reuse existing workers where practical.
 
 `control/HEAVY-TASK-PROTOCOL.md` supersedes every older statement calling a full suite light or permitting work based only on machine load. All full suites, production builds, fixture/browser rendering, OCR integration runs, E2E and model evaluations require a unique explicit reservation from master thread `4fa0a3e9-3624-4fdd-abf3-e663d61799d6`. A queue entry is not permission. Drafting and small targeted checks may continue. The master alone writes the reservation file; no new scheduler/heartbeat/monitor.
+
+
+## S3 normative amendments after G3 — GPT-6 Astra HIGH,18 October2026
+
+G3 accepted real OCR/PDF input and production-browser evidence. Stage S3 will reuse existing Sol HIGH slot2 on codex/slot2-exports-polish after the integrator merges S2, preserving one active Basics worker. Stage S3 ownership is the original slot4 scope.
+
+Follow the added decisions8–11 in docs/decisions/plan-vs-spec.md over conflicting examples in §§10.6,14: absolute UTC alarm for09:00SGT preceding day; stored store string verbatim; actual OCR05→08; no false restore after Start over. The original relative TRIGGER;-15hours recipe is superseded. Retain independent falsifying tests for event dates, UTC alarm instants, escape/folding, exclusions and persistence clearing.
+
+S3 visual review must address the long S2 workspace/oversized receipt and action bar covering content: use a compact receipt preview with access to full image, appropriate scroll spacing, and inspect actual1280×800 and390px screenshots. This remains the planned polish scope.
+
+All full suites/builds/E2E/integration commands still require a unique explicit master reservation; only drafting/small targeted checks proceed without it. G4 and final export/submission gates remain outstanding.
