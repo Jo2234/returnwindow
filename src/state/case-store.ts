@@ -30,24 +30,55 @@ export function useCaseStore(now: Date) {
     const initialized = useRef(false), timer = useRef<ReturnType<typeof setTimeout> | null>(null);
     useEffect(() => {
         // Run once even under StrictMode's effect replay. Invalid state is cleared by loadCase.
-        if (initialized.current) return; initialized.current = true;
+        if (initialized.current)
+            return;
+        initialized.current = true;
         try {
             const existed = localStorage.getItem(CASE_STORAGE_KEY) !== null, saved = loadCase(localStorage);
-            if (saved) { send({ type: 'replace', state: saved, now }); setRestored(true); }
-            else if (existed) setStorageWarning("Saved case couldn't be read and was cleared.");
-        } catch { setStorageWarning('Local saving is unavailable; this case is kept in memory only.'); }
+            if (saved) {
+                send({ type: 'replace', state: saved, now });
+                setRestored(true);
+            }
+            else if (existed)
+                setStorageWarning("Saved case couldn't be read and was cleared.");
+        }
+        catch {
+            setStorageWarning('Local saving is unavailable; this case is kept in memory only.');
+        }
         setReady(true);
     }, []);
     const dispatch = useCallback((action: StoreAction) => {
-        if (timer.current) { clearTimeout(timer.current); timer.current = null; }
-        if (action.type === 'reset') { try { clearCase(localStorage); } catch { /* Memory reset still works. */ } setRestored(false); }
+        if (timer.current) {
+            clearTimeout(timer.current);
+            timer.current = null;
+        }
+        if (action.type === 'reset') {
+            try {
+                clearCase(localStorage);
+            }
+            catch { /* Memory reset still works. */ }
+            setRestored(false);
+        }
         send(action);
     }, []);
     useEffect(() => {
-        if (!ready) return;
-        if (!store.case.receipt && !store.case.policy) { try { clearCase(localStorage); } catch { /* Storage blocked. */ } return; }
-        timer.current = setTimeout(() => { try { saveCase(store.case, localStorage); } catch { /* Storage blocked. */ } timer.current = null; }, 300);
-        return () => { if (timer.current) { clearTimeout(timer.current); timer.current = null; } };
+        if (!ready)
+            return;
+        if (!store.case.receipt && !store.case.policy) {
+            try {
+                clearCase(localStorage);
+            }
+            catch { /* Storage blocked. */ }
+            return;
+        }
+        timer.current = setTimeout(() => { try {
+            saveCase(store.case, localStorage);
+        }
+        catch { /* Storage blocked. */ } timer.current = null; }, 300);
+        return () => { if (timer.current) {
+            clearTimeout(timer.current);
+            timer.current = null;
+        } };
     }, [store.case, ready]);
     return [store, dispatch, { restored, storageWarning }] as const;
 }

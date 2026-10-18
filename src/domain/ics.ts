@@ -1,27 +1,46 @@
 import type { CaseResult, CaseState } from './types';
 import { addDays, formatLong } from './civil-date';
 import { DATE_CONVENTION } from './engine';
-
 export const escapeIcsText = (text: string): string => text.replace(/\\/g, '\\\\').replace(/\r\n?|\n/g, '\\n').replace(/;/g, '\\;').replace(/,/g, '\\,');
 // Count UTF-8 octets, including the continuation space; never split a code point.
 export function foldIcsLine(line: string): string {
     const encoder = new TextEncoder();
-    let current = '', bytes = 0; const lines: string[] = [];
+    let current = '', bytes = 0;
+    const lines: string[] = [];
     for (const character of line) {
         const size = encoder.encode(character).length;
-        if (bytes + size > 75) { lines.push(current); current = ' '; bytes = 1; }
-        current += character; bytes += size;
+        if (bytes + size > 75) {
+            lines.push(current);
+            current = ' ';
+            bytes = 1;
+        }
+        current += character;
+        bytes += size;
     }
-    lines.push(current); return lines.join('\r\n');
+    lines.push(current);
+    return lines.join('\r\n');
 }
-export function buildIcs(state: CaseState, result: CaseResult, now: Date): { text: string; included: string[]; excluded: { itemId: string; reason: string }[] } {
-    const included: string[] = [], excluded: { itemId: string; reason: string }[] = [];
+export function buildIcs(state: CaseState, result: CaseResult, now: Date): {
+    text: string;
+    included: string[];
+    excluded: {
+        itemId: string;
+        reason: string;
+    }[];
+} {
+    const included: string[] = [], excluded: {
+        itemId: string;
+        reason: string;
+    }[] = [];
     const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ReturnWindow//EN', 'METHOD:PUBLISH', 'CALSCALE:GREGORIAN'];
     const text = (name: string, value: string) => lines.push(`${name}:${escapeIcsText(value)}`);
     for (const item of state.receipt?.items ?? []) {
         const outcome = result.items.find(r => r.itemId === item.id)?.outcome;
-        const reason = result.refusal?.code ?? (!outcome ? 'No result' : outcome.status !== 'computed' ? ({ not_returnable: 'Not returnable', unsure: 'Clock start not confirmed', needs_answer: 'Waiting for your answer', no_policy_match: 'No policy match', unsupported: 'Business days unsupported', conflict: 'Conflicting passages', missing_input: 'Missing date' }[outcome.status]) : outcome.deadline < result.today ? 'Already passed' : null);
-        if (reason || outcome?.status !== 'computed' || !state.policy) { excluded.push({ itemId: item.id, reason: reason ?? 'No policy' }); continue; }
+        const reason = (result.refusal ? { no_policy: 'No policy supplied', no_window_in_policy: 'No return window found', no_receipt: 'No receipt supplied' }[result.refusal.code] : null) ?? (!outcome ? 'No result' : outcome.status !== 'computed' ? ({ not_returnable: 'Not returnable', unsure: 'Clock start not confirmed', needs_answer: 'Waiting for your answer', no_policy_match: 'No policy match', unsupported: 'Business days unsupported', conflict: 'Conflicting passages', missing_input: 'Missing date' }[outcome.status]) : outcome.deadline < result.today ? 'Already passed' : null);
+        if (reason || outcome?.status !== 'computed' || !state.policy) {
+            excluded.push({ itemId: item.id, reason: reason ?? 'No policy' });
+            continue;
+        }
         included.push(item.id);
         const clause = state.policy.clauses.find(c => c.id === outcome.clauseId)!;
         const description = item.description.value ?? 'Item', store = state.receipt?.store.value ?? 'Store not provided';

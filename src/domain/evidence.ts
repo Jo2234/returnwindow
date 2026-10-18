@@ -2,7 +2,6 @@ import type { CaseResult, CaseState, ItemOutcome } from './types';
 import { formatLong, todayInSingapore } from './civil-date';
 import { DATE_CONVENTION } from './engine';
 import { policySpansValid } from './policy-parser';
-
 export const escapeHtml = (text: unknown): string => String(text ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 export const EVIDENCE_CSS = `
 .evidence-pack{max-width:900px;margin:24px auto;padding:28px;background:#fff;color:#1e2330;font:14px/1.6 system-ui,sans-serif;overflow-wrap:anywhere}
@@ -26,13 +25,16 @@ function statusText(outcome: ItemOutcome): string {
         case 'missing_input': return `Missing ${outcome.field === 'deliveryDate' ? 'delivery' : 'purchase'} date`;
     }
 }
-export function buildEvidenceHtml(state: CaseState, result: CaseResult, now: Date, opts: { receiptImageDataUrl: string | null }): string {
+export function buildEvidenceHtml(state: CaseState, result: CaseResult, now: Date, opts: {
+    receiptImageDataUrl: string | null;
+}): string {
     const e = escapeHtml, policy = state.policy;
     const used = new Set(result.items.flatMap(r => 'clauseId' in r.outcome ? [r.outcome.clauseId] : r.outcome.status === 'conflict' ? r.outcome.clauseIds : []));
     const rows = (state.receipt?.items ?? []).map(item => {
         const r = result.items.find(r => r.itemId === item.id), o = r?.outcome;
         const ids = o && 'clauseId' in o ? [o.clauseId] : o?.status === 'conflict' ? o.clauseIds : [];
-        return `<tr><td>${e(item.description.value)}<br>SGD ${e(item.amountCents.value === null ? 'Not provided' : (item.amountCents.value / 100).toFixed(2))}</td><td>${e(result.refusal ? `No deadline: ${result.refusal.code}` : o ? statusText(o) : 'No result')}</td><td>${e(o?.status === 'computed' ? `${o.window.amount} ${o.window.unit.replace(/_/g, ' ')} from ${o.start.basis} (${formatLong(o.start.date)}) via ${o.start.via}` : '—')}</td><td>${e(ids.map(id => `Passage ${id.slice(1)}`).join(', ') || '—')}</td></tr>`;
+        const status = result.refusal ? { no_policy: 'No policy, no deadline.', no_window_in_policy: 'No return window found; no deadline computed.', no_receipt: 'No receipt supplied; no deadline computed.' }[result.refusal.code] : o?.status === 'computed' && o.deadline < result.today ? `Closed — ${formatLong(o.deadline)}` : o ? statusText(o) : 'No result';
+        return `<tr><td>${e(item.description.value)}<br>SGD ${e(item.amountCents.value === null ? 'Not provided' : (item.amountCents.value / 100).toFixed(2))}</td><td>${e(status)}</td><td>${e(o?.status === 'computed' ? `${o.window.amount} ${o.window.unit.replace(/_/g, ' ')} from ${o.start.basis} (${formatLong(o.start.date)}) via ${o.start.via}` : '—')}</td><td>${e(ids.map(id => `Passage ${id.slice(1)}`).join(', ') || '—')}</td></tr>`;
     }).join('');
     const passages = policy && policySpansValid(policy) ? policy.clauses.filter(c => used.has(c.id)).map(c => `<section><h3>Passage ${e(c.id.slice(1))} · offsets ${c.span.start}–${c.span.end}</h3><blockquote>${e(c.span.text)}</blockquote></section>`).join('') : policy ? '<p>Evidence mismatch; quotations hidden.</p>' : '<p>No policy supplied.</p>';
     const corrections = state.corrections.map(c => `<tr><td>${e(new Intl.DateTimeFormat('en-SG', { timeZone: 'Asia/Singapore', dateStyle: 'medium', timeStyle: 'medium', hour12: false }).format(new Date(c.at)))} SGT</td><td>${e(c.target.field)}${'itemId' in c.target ? ` (${e(c.target.itemId)})` : ''}</td><td>${e(c.from ?? 'Not provided')} → ${e(c.to)}</td></tr>`).join('');
