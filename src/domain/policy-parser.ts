@@ -3,6 +3,17 @@ import { categoriesInText } from './categories';
 import { makeSpan, verifySpan } from './spans';
 const numbers: Record<string, number> = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, fourteen: 14, fifteen: 15, twenty: 20, 'twenty-one': 21, thirty: 30, 'forty-five': 45, sixty: 60, ninety: 90 };
 const windowPattern = new RegExp(`\\b(\\d{1,3}|${Object.keys(numbers).sort((a, b) => b.length - a.length).join('|')})(?:\\s*\\((\\d{1,3})\\))?[\\s-]*(calendar\\s+|business\\s+|working\\s+)?(days?|weeks?|months?)\\b`, 'gi');
+// Classify each duration separately: one sentence may contain both a shopper's
+// return window and the store's subsequent refund-processing time.
+function isProcessingDuration(clause: string, match: RegExpMatchArray): boolean {
+    const after = clause.slice(match.index! + match[0].length);
+    if (/^\s*(?:of approval|of processing|to process|of (?:receiving|receipt of) (?:your|the) return|after we receive (?:your|the) return)\b/i.test(after))
+        return true;
+    const before = clause.slice(0, match.index);
+    const governing = [...before.matchAll(/\b(?:returns?|returned|refunds?|refunded|credits?|credited|exchanges?|exchanged)\b/gi)].at(-1);
+    return !!governing && /^(?:refunds?|refunded|credits?|credited)$/i.test(governing[0])
+        && /\b(?:issued|processed|credited|paid|reimbursed)\b/i.test(clause);
+}
 function segments(text: string): [
     number,
     number
@@ -54,21 +65,21 @@ export function analysePolicy(label: string, input: string, capturedOn: CivilDat
     const add = (clause: Omit<PolicyClause, 'id'>) => clauses.push({ id: `c${clauses.length + 1}`, ...clause });
     function analyse(start: number, end: number, maySplit = true, inheritedReturn = false): void {
         const span = makeSpan(text, start, end), scope = scopeFor(text, span), anchor = anchorFor(text, span);
+        const hasReturnKeyword = inheritedReturn || /\b(?:returns?|returned|refunds?|refunded|credits?|credited|exchanges?|exchanged)\b/i.test(span.text);
+        const matches = hasReturnKeyword ? [...span.text.matchAll(windowPattern)] : [];
+        const disagrees = matches.some(m => m[2] && Number(m[2]) !== (numbers[m[1]!.toLowerCase()] ?? Number(m[1])));
+        const windows = disagrees ? [] : matches.filter(m => !isProcessingDuration(span.text, m));
         const exclusion = /\b(?:final sale|non-returnable|not eligible for (?:a\s+)?return|cannot be returned|no returns|not returnable)\b/i.test(span.text);
-        if (exclusion) {
-            const marker = /\b(?:marked|labelled|labeled)\s+(?:final sale|clearance)\b/i.exec(span.text);
+        const marker = exclusion ? /\b(?:marked|labelled|labeled)\s+(?:final sale|clearance)\b/i.exec(span.text) : null;
+        // Keep the full passage, including conditions, for the shopper to read.
+        // Only explicit marked exclusions override a valid window in the clause.
+        if (exclusion && (marker || windows.length === 0)) {
             if (marker)
                 add({ span, kind: 'exclusion', window: null, anchor, scope: { type: 'marked', marker: 'final_sale', span: makeSpan(text, start + marker.index, start + marker.index + marker[0].length) } });
             else if (scope.type === 'categories')
                 add({ span, kind: 'exclusion', window: null, anchor, scope });
             return;
         }
-        if (!inheritedReturn && !/\b(?:returns?|returned|refunds?|exchange)\b/i.test(span.text))
-            return;
-        const matches = [...span.text.matchAll(windowPattern)];
-        if (matches.some(m => m[2] && Number(m[2]) !== (numbers[m[1]!.toLowerCase()] ?? Number(m[1]))))
-            return;
-        const windows = matches.filter(m => !/^\s*(?:of approval|of processing|to process)\b/i.test(span.text.slice(m.index + m[0].length)));
         if (maySplit && windows.length > 1) {
             const boundaries: number[] = [];
             for (let i = 1; i < windows.length; i++) {

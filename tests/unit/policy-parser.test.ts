@@ -34,7 +34,7 @@ it('W9 month-end clamps in the engine', () => expect(computeCase(simple('You may
 it('W10 shared preposition still makes both anchors ambiguous', () => expect(computeCase(simple('Returns within 30 days of purchase or delivery, whichever is later.'), now).items[0]!.outcome).toMatchObject({ status: 'needs_answer', earliestPossible: '2026-11-07' }));
 it('W11 newline normalization preserves normalized offsets and clauses', () => { const crlf = policy(policyText.replace(/\n/g, '\r\n')); expect(crlf.text).not.toContain('\r'); expect(crlf.clauses).toEqual(policy().clauses); });
 it('W12 500 randomized Unicode and bullet combinations preserve every nested span', () => {
-    const template = fc.constantFrom('Apparel returns within 30 days of purchase.', 'Electronics returns within 14 days if unopened.', 'Items marked FINAL SALE cannot be returned.', 'Return most items within thirty (30) days of delivery.', 'No return window here!', 'Home returns within 2 weeks from purchase; Shoes returns within 1 month after delivery.');
+    const template = fc.constantFrom('Apparel returns within 30 days of purchase.', 'Electronics returns within 14 days if unopened.', 'Items marked FINAL SALE cannot be returned.', 'Return most items within thirty (30) days of delivery.', 'No return window here!', 'Refunds are processed within 10 days.', 'Refunds will be credited within 14 days of receiving your return.', 'Returns are accepted within 30 days of purchase, and refunds are issued within 10 days.', "Items may be returned within 30 days of purchase. We'll refund you within 14 days after we receive your return.", 'Electronics may be returned within 14 days of purchase, except opened software, which cannot be returned.', 'Electronics cannot be returned.', 'Home returns within 2 weeks from purchase; Shoes returns within 1 month after delivery.');
     fc.assert(fc.property(fc.array(fc.tuple(fc.constantFrom('', '  ', '\t', '• ', '1. ', '- ', '😀 é — “ ” '), template, fc.constantFrom('', '  ', '\t')), { minLength: 1, maxLength: 8 }), chunks => {
         const text = chunks.map(c => c.join('')).join('\n'), p = analysePolicy('fuzz', text, civil('2026-10-18'), '0'.repeat(64));
         for (const c of p.clauses) {
@@ -63,4 +63,40 @@ it('separate category phrases split multiple windows; unsplit competing windows 
     expect(p.clauses[1]).toMatchObject({ window: { amount: 14 }, scope: { type: 'categories', categories: ['footwear'] }, anchor: { value: 'purchase' } });
     const s = simple('Return apparel within 30 days or 14 days of purchase.');
     expect(computeCase(s, now).items[0]!.outcome).toEqual({ status: 'conflict', clauseIds: ['c1', 'c2'] });
+});
+
+it('W13 refund processing alone supplies no window and refuses the case', () => {
+    const text = 'Refunds are processed within 10 days.';
+    expect(policy(text).clauses).toEqual([]);
+    expect(computeCase(simple(text), now).refusal).toEqual({ code: 'no_window_in_policy' });
+});
+it('W14 credit after receiving a return is processing, never a delivery clock', () => {
+    expect(policy('Refunds will be credited within 14 days of receiving your return.').clauses).toEqual([]);
+});
+it('W15 mixed return and refund clocks keep only the genuine return window', () => {
+    const text = 'Returns are accepted within 30 days of purchase, and refunds are issued within 10 days.';
+    const p = policy(text);
+    expect(p.clauses).toHaveLength(1);
+    expect(p.clauses[0]).toMatchObject({ kind: 'window', window: { amount: 30, unit: 'days', span: { text: '30 days' } }, anchor: { value: 'purchase' }, scope: { type: 'default' } });
+    expect(computeCase(simple(text), now).items[0]!.outcome).toMatchObject({ status: 'computed', deadline: '2026-11-07', start: { date: '2026-10-08', basis: 'purchase' }, window: { amount: 30, unit: 'days' } });
+});
+it('W16 refund processing after a return sentence does not add a second window', () => {
+    const p = policy("Items may be returned within 30 days of purchase. We'll refund you within 14 days after we receive your return.");
+    expect(p.clauses).toHaveLength(1);
+    expect(p.clauses[0]).toMatchObject({ kind: 'window', window: { amount: 30, unit: 'days' }, anchor: { value: 'purchase' } });
+});
+it('W17 a conditional exclusion preserves the electronics window and full passage', () => {
+    const text = 'Electronics may be returned within 14 days of purchase, except opened software, which cannot be returned.';
+    const p = policy(text);
+    expect(p.clauses).toHaveLength(1);
+    expect(p.clauses[0]).toMatchObject({ kind: 'window', span: { text }, window: { amount: 14, unit: 'days' }, anchor: { value: 'purchase' }, scope: { type: 'categories', categories: ['electronics'] } });
+    expect(computeCase(simple(text, '2026-10-08', 'Earbuds'), now).items[0]!.outcome).toMatchObject({ status: 'computed', deadline: '2026-10-22', start: { date: '2026-10-08', basis: 'purchase' } });
+});
+it('W18 a pure electronics exclusion remains not returnable', () => {
+    const text = 'Electronics cannot be returned.';
+    expect(policy(text).clauses).toHaveLength(1);
+    expect(policy(text).clauses[0]).toMatchObject({ kind: 'exclusion', window: null, scope: { type: 'categories', categories: ['electronics'] } });
+    // The separate default window avoids the case-wide no-window refusal,
+    // so this checks exclusion precedence through the engine as well.
+    expect(computeCase(simple(text + '\nAll other items may be returned within 30 days of purchase.', '2026-10-08', 'Earbuds'), now).items[0]!.outcome).toEqual({ status: 'not_returnable', clauseId: 'c1' });
 });
