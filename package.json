@@ -1,13 +1,41 @@
 {
-  "name": "returnwindow", "version": "0.1.0", "private": true, "type": "module",
-  "packageManager": "pnpm@12.11.2", "engines": {"node": ">=24"},
-  "scripts": {
-    "dev": "vite --host 127.0.0.1 --port 5188 --strictPort",
-    "preview": "vite preview --host 127.0.0.1 --port 4188 --strictPort",
-    "typecheck": "tsc --noEmit", "test": "vitest run tests/unit --maxWorkers=2",
-    "test:tz": "TZ=UTC vitest run tests/unit/civil-date.test.ts tests/unit/engine.test.ts tests/unit/demo-case.test.ts --maxWorkers=2 && TZ=America/Los_Angeles vitest run tests/unit/civil-date.test.ts tests/unit/engine.test.ts tests/unit/demo-case.test.ts --maxWorkers=2 && TZ=Pacific/Kiritimati vitest run tests/unit/civil-date.test.ts tests/unit/engine.test.ts tests/unit/demo-case.test.ts --maxWorkers=2",
-    "build": "tsc --noEmit && vite build"
+  "name": "returnwindow",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.11.2",
+  "engines": {
+    "node": ">=24"
   },
-  "dependencies": {"react": "19.3.1", "react-dom": "19.3.1", "zod": "4.6.7"},
-  "devDependencies": {"@types/react": "19.3.0", "@types/react-dom": "19.3.0", "vite": "7.3.7", "@vitejs/plugin-react": "5.2.0", "typescript": "6.0.3", "vitest": "4.1.12", "fast-check": "4.10.2", "@types/node": "24.19.2"}
+  "scripts": {
+    "dev": "node scripts/copy-ocr-assets.mjs && vite --host 127.0.0.1 --port 5188 --strictPort",
+    "preview": "vite preview --host 127.0.0.1 --port 4188 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run tests/unit --maxWorkers=2",
+    "test:tz": "TZ=UTC vitest run tests/unit/civil-date.test.ts tests/unit/engine.test.ts tests/unit/demo-case.test.ts --maxWorkers=2 && TZ=America/Los_Angeles vitest run tests/unit/civil-date.test.ts tests/unit/engine.test.ts tests/unit/demo-case.test.ts --maxWorkers=2 && TZ=Pacific/Kiritimati vitest run tests/unit/civil-date.test.ts tests/unit/engine.test.ts tests/unit/demo-case.test.ts --maxWorkers=2",
+    "build": "node scripts/copy-ocr-assets.mjs && tsc --noEmit && vite build",
+    "postinstall": "node scripts/copy-ocr-assets.mjs",
+    "test:ocr": "vitest run tests/ocr --maxWorkers=1",
+    "fixtures:render": "node scripts/render-fixtures.mjs",
+    "licenses": "pnpm licenses list --json > docs/licenses.json"
+  },
+  "dependencies": {
+    "@tesseract.js-data/eng": "1.0.0",
+    "pdfjs-dist": "6.4.299",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tesseract.js": "7.0.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "5.2.0",
+    "fast-check": "4.10.2",
+    "typescript": "6.0.3",
+    "vite": "7.3.7",
+    "vitest": "4.1.12"
+  }
 }

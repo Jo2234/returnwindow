@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import type { CaseState, CivilDate, Correction, PolicyDoc } from './domain/types';
+import type { CaseState, CivilDate, Correction, OcrDocument, PolicyDoc } from './domain/types';
 import { parseCivilDate, formatLong, todayInSingapore } from './domain/civil-date';
-import { documentFromText, extractedField, parseAmount, parseDateToken, parseReceipt } from './domain/receipt-parser';
+import { extractedField, parseAmount, parseDateToken, parseReceipt } from './domain/receipt-parser';
+import { documentFromText, routeFile, receiptIsUnreadable } from './extract/input';
+import { recognizeImage } from './extract/ocr';
+import { readPdf } from './extract/pdf';
 import { analysePolicy } from './domain/policy-parser';
 import { applyCorrection, displayDate } from './domain/corrections';
 import { questionFor } from './domain/questions';
@@ -20,6 +23,11 @@ export default function App() {
     const [label, setLabel] = useState('Store return policy'), [captured, setCaptured] = useState(todayInSingapore(now()));
     const [error, setError] = useState(''), [flash, setFlash] = useState<string | null>(null), [showChanges, setShowChanges] = useState(false);
     const [editingQuestionId, setEditingQuestionId] = useState<string | null>(null);
+    const [reading,setReading]=useState<{status:string;progress:number}|null>(null);
+    const [receiptImage,setReceiptImage]=useState<string|null>(null);
+    const [failed,setFailed]=useState<{message:string;document:OcrDocument|null}|null>(null);
+    const extraction=useRef<{id:number;controller:AbortController|null;imageUrl:string|null}>({id:0,controller:null,imageUrl:null});
+    useEffect(()=>()=>{extraction.current.id++;extraction.current.controller?.abort();if(extraction.current.imageUrl)URL.revokeObjectURL(extraction.current.imageUrl);},[]);
     const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { case: state, result, previousResult } = store;
     const editingClause = state.policy?.clauses.find(c => `clock:${c.id}` === editingQuestionId);
@@ -45,59 +53,66 @@ export default function App() {
         return analysePolicy(label.trim().slice(0, 120) || 'Store return policy', normalized, capturedOn, sha);
     }
     const replace = (state: CaseState) => dispatch({ type: 'replace', state, now: now() });
-    async function load(receipt: string, policy: string, sample = false) {
-        try {
-            const state = emptyCase();
-            state.policy = await makePolicy(policy);
-            state.sample = sample;
-            state.receiptOcr = documentFromText(receipt);
-            state.receipt = parseReceipt(state.receiptOcr);
-            setError('');
-            replace(state);
+    function releaseImage(){if(extraction.current.imageUrl)URL.revokeObjectURL(extraction.current.imageUrl);extraction.current.imageUrl=null;setReceiptImage(null);}
+    function stopExtraction():number {
+        const current=extraction.current;current.id++;current.controller?.abort();current.controller=null;
+        releaseImage();setReading(null);return current.id;
+    }
+    function beginExtraction():{id:number;controller:AbortController} {
+        const id=stopExtraction(),controller=new AbortController();extraction.current.controller=controller;
+        setFailed(null);setError('');dispatch({type:'reset',now:now()});return {id,controller};
+    }
+    function current(id:number):boolean {return extraction.current.id===id&&!extraction.current.controller?.signal.aborted;}
+    async function commitDocument(doc:OcrDocument,policyText:string,sample:boolean,id:number,requireReadable:boolean) {
+        const receipt=parseReceipt(doc);
+        if(requireReadable&&receiptIsUnreadable(doc,receipt)) {
+            if(current(id)){releaseImage();setFailed({message:"We couldn't read enough from this image.",document:doc});setReading(null);}
+            return;
         }
-        catch (e) {
-            setError(e instanceof Error ? e.message : 'The text could not be read. Try again.');
+        const policy=await makePolicy(policyText);if(!current(id))return;
+        const state=emptyCase();state.policy=policy;state.sample=sample;state.receiptOcr=doc;state.receipt=receipt;
+        setReceiptText(doc.lines.map(line=>line.text).join('\n'));setError('');setReading(null);setFailed(null);replace(state);
+    }
+    async function load(receipt:string,policy:string,sample=false) {
+        const {id}=beginExtraction();
+        try{await commitDocument(documentFromText(receipt),policy,sample,id,false);}
+        catch(e){if(current(id))setError(e instanceof Error?e.message:'The text could not be read. Try again.');}
+    }
+    async function extractFile(file:File,policy:string,sample:boolean,id:number,controller:AbortController) {
+        const route=routeFile(file);
+        if(file.size>15*1024*1024)throw new Error('That file is too large (max 15 MB).');
+        if(route==='unsupported')throw new Error("That file type isn't supported. Use PNG, JPG, WebP, PDF or text.");
+        if(route==='image') {
+            const url=URL.createObjectURL(file);if(!current(id)){URL.revokeObjectURL(url);return;}
+            extraction.current.imageUrl=url;setReceiptImage(url);
         }
+        setReading({status:route==='pdf'?'Reading PDF on this device…':'Reading receipt on this device…',progress:0});
+        const onProgress=(p:{status:string;progress:number})=>{if(current(id))setReading({status:p.status==='recognizing text'?'Reading receipt on this device…':p.status,progress:p.progress});};
+        const doc=route==='image'?await recognizeImage(file,onProgress,controller.signal):route==='pdf'?await readPdf(file,controller.signal):documentFromText(await file.text());
+        if(current(id))await commitDocument(doc,policy,sample,id,route!=='text');
     }
     async function sample() {
+        const {id,controller}=beginExtraction();setReading({status:'Loading the synthetic sample…',progress:0});
         try {
-            const [receipt, policy] = await Promise.all(['/samples/receipt-demo.txt', '/samples/policy-demo.txt'].map(async (url) => { const response = await fetch(url); if (!response.ok)
-                throw new Error('Sample unavailable'); return response.text(); }));
-            setReceiptText(receipt!);
-            setPolicyText(policy!);
-            await load(receipt!, policy!, true);
-        }
-        catch {
-            setError('The sample could not be loaded. Paste the text instead.');
-        }
+            const [imageResponse,policyResponse]=await Promise.all(['/samples/receipt-demo-messy.png','/samples/policy-demo.txt'].map(url=>fetch(url,{signal:controller.signal})));
+            if(!imageResponse!.ok||!policyResponse!.ok)throw new Error('The sample could not be loaded. Paste the text instead.');
+            const [blob,policy]=await Promise.all([imageResponse!.blob(),policyResponse!.text()]);if(!current(id))return;
+            setPolicyText(policy);await extractFile(new File([blob],'receipt-demo-messy.png',{type:'image/png'}),policy,true,id,controller);
+        }catch(e){if(current(id)){releaseImage();setReading(null);setFailed({message:e instanceof Error?e.message:'The sample could not be loaded. Paste the text instead.',document:null});}}
     }
-    async function readText(file: File | undefined, policy: boolean) {
-        if (!file)
-            return;
-        if (file.size > 15 * 1024 * 1024) {
-            setError('That file is too large (max 15 MB).');
-            return;
+    async function readText(file:File|undefined,policy:boolean) {
+        if(!file)return;
+        if(policy) {
+            try{if(routeFile(file)!=='text')throw new Error('Use a .txt file for the store return policy.');if(file.size>15*1024*1024)throw new Error('That file is too large (max 15 MB).');
+                const text=await file.text();if(text.length>50000)throw new Error('That policy is too long (max 50,000 characters).');setPolicyText(text);setError('');
+            }catch(e){setError(e instanceof Error?e.message:'The text file could not be read. Paste the text instead.');}return;
         }
-        if (!file.name.toLowerCase().endsWith('.txt')) {
-            setError('Use a text file in this slice. Photo and PDF input arrive in the next slice.');
-            return;
-        }
-        try {
-            const text = await file.text();
-            if (policy && text.length > 50000) {
-                setError('That policy is too long (max 50,000 characters).');
-                return;
-            }
-            if (policy)
-                setPolicyText(text);
-            else
-                setReceiptText(text);
-            setError('');
-        }
-        catch {
-            setError('The text file could not be read. Paste the text instead.');
-        }
+        const {id,controller}=beginExtraction();
+        try{await extractFile(file,policyText,false,id,controller);}
+        catch(e){if(current(id)){releaseImage();setReading(null);setFailed({message:e instanceof Error?e.message:'The receipt could not be read. Paste the text instead.',document:null});}}
     }
+    function cancelReading(){stopExtraction();setFailed(null);setError('');}
+    function pasteRecovery(){const doc=failed?.document;stopExtraction();setFailed(null);if(doc)setReceiptText(doc.lines.map(line=>line.text).join('\n'));requestAnimationFrame(()=>document.querySelector<HTMLTextAreaElement>('textarea')?.focus());}
     function prepareCorrection(current: CaseState, target: Correction['target'], input: unknown): {
         state: CaseState;
     } | {
@@ -174,6 +189,7 @@ export default function App() {
         setError(e instanceof Error ? e.message : 'Policy could not be read.');
     } }
     function startOver() { if (confirm('Start over and clear this case?')) {
+        stopExtraction();setFailed(null);
         dispatch({ type: 'reset', now: now() });
         setReceiptText('');
         setPolicyText('');
@@ -186,10 +202,12 @@ export default function App() {
     <header><strong>ReturnWindow</strong>{simulated && <span className="chip">Simulated today: {formatLong(simulated)}</span>}{state.sample && <span className="chip">Synthetic sample</span>}</header>
     <main>
       {error && <p role="alert" className="refusal">{error}</p>}
+      {reading?<section className="panel" aria-label="Reading receipt">{receiptImage&&<img src={receiptImage} alt="Receipt being read" style={{maxWidth:260,maxHeight:300}}/>}<p role="status">{reading.status} {Math.round(reading.progress*100)}%</p><progress aria-label="Receipt reading progress" value={reading.progress} max={1}/><button onClick={cancelReading}>Cancel</button><label>Replace receipt<input data-receipt-file type="file" accept="image/png,image/jpeg,image/webp,application/pdf,text/plain,.txt" onChange={e=>void readText(e.target.files?.[0],false)}/></label></section>:<>
+      {failed&&<section className="panel refusal" role="alert" data-state="receipt_failed"><h2>{failed.message}</h2><button onClick={()=>document.querySelector<HTMLInputElement>('input[data-receipt-file]')?.click()}>Try another image</button><button onClick={pasteRecovery}>Paste the text instead</button><button onClick={()=>void load('',policyText)}>Enter details manually</button></section>}
       {!state.receipt ? <TextInputs receipt={receiptText} onReceipt={setReceiptText} onSubmit={() => void load(receiptText, policyText)} onSample={() => void sample()} policy={policyInputs}/> : <>
         {result.refusal && <div role="alert" className="refusal">{result.refusal.code === 'no_policy' ? "No policy, no deadline. Paste the store's return policy — ReturnWindow doesn't guess store rules." : result.refusal.code === 'no_window_in_policy' ? "We couldn't find a return window (like '30 days') in this text, so no deadlines are shown." : 'Add a receipt to see item deadlines.'}</div>}
         <div className="workspace">
-          <ReceiptPanel state={state} onCorrect={correct} onAddItem={addItem}/>
+          <ReceiptPanel state={state} onCorrect={correct} onAddItem={addItem} imageUrl={receiptImage} onFile={file=>void readText(file,false)}/>
           <section aria-label="Deadlines"><h2>Deadlines</h2>{activeQuestion && <QuestionCard key={`${activeQuestion.id}:${editingQuestionId ?? ''}`} question={activeQuestion} count={editingClause ? 1 : result.questions.length} onAnswer={answer}/>}
             {result.items.map(r => <ItemCard key={r.itemId} item={state.receipt!.items.find(i => i.id === r.itemId)!} result={r} previous={showChanges ? previousResult?.items.find(p => p.itemId === r.itemId) : undefined} refused={!!result.refusal} onCategory={value => { const error = correct({ field: 'item.category', itemId: r.itemId }, value); if (error)
             setError(error); }} onPassage={showPassage}/>)}
@@ -200,7 +218,8 @@ export default function App() {
         <details className="panel changes"><summary>Changes ({state.corrections.length}) and answers</summary>{state.corrections.map(c => <p key={c.id}>{c.target.field}: {c.from ?? 'Not provided'} → {c.to}</p>)}{state.answers.map(a => <p key={a.questionId}>{a.questionId}: {a.choice} <button className="subtle" onClick={() => { setEditingQuestionId(a.questionId); }}>Change answer</button></p>)}</details>
         <p className="convention">{DATE_CONVENTION}</p><div className="actions"><button disabled title="Coming in a later slice">Download reminders (.ics) (coming in a later slice)</button><button disabled>Evidence pack (coming in a later slice)</button><button onClick={startOver}>Start over</button></div>
       </>}
+      </>}
     </main>
-    <footer><p>Runs entirely in your browser. Nothing is uploaded. Not legal advice.</p><p>Extraction: on-device OCR (Tesseract LSTM) + deterministic rules. No generative AI model is used to compute deadlines.</p><p>This slice accepts text. On-device image and PDF extraction arrive in the next slice.</p></footer>
+    <footer><p>Runs entirely in your browser. Nothing is uploaded. Not legal advice.</p><p>Extraction: on-device OCR (Tesseract LSTM) + deterministic rules. No generative AI model is used to compute deadlines.</p></footer>
   </>;
 }

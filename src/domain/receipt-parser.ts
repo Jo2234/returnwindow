@@ -1,10 +1,7 @@
 import type { CivilDate, Field, OcrDocument, ReceiptExtraction } from './types';
 import { parseCivilDate } from './civil-date';
 import { categorize, saleMarker } from './categories';
-// Temporary adapter; Stage S2 moves this export into extract/input.ts.
-export function documentFromText(text: string): OcrDocument {
-    return { source: 'pasted-text', engine: null, imageSize: null, lines: text.replace(/\r\n?/g, '\n').split('\n').map(text => ({ text, confidence: 100, bbox: null, words: [] })) };
-}
+export { documentFromText } from '../extract/input';
 export function extractedField<T>(value: T | null, confidence = 100, lineIndex: number | null = null, raw: string | null = null): Field<T> {
     return { value, confidence, lineIndex, raw, origin: 'extracted', needsCheck: confidence < 70, note: confidence < 70 ? 'Low reading confidence' : null };
 }
