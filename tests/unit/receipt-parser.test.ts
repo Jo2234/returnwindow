@@ -1,0 +1,20 @@
+import { it, expect } from 'vitest';
+import { parseAmount, parseDateToken, parseReceipt, documentFromText } from '../../src/domain/receipt-parser';
+import { computeCase } from '../../src/domain/engine';
+import { demo, now, receiptText, simple } from './helpers';
+it('P1 DMY ambiguous', () => expect(parseDateToken('08/10/2026')).toEqual({ date: '2026-10-08', format: 'DMY', ambiguous: true }));
+it('P2 unambiguous DMY', () => expect(parseDateToken('25/10/2026')).toEqual({ date: '2026-10-25', format: 'DMY', ambiguous: false }));
+it.each(['2026-10-08', '8 Oct 2026', 'Oct 8, 2026', '08/10/26', '08-10-2026', '08.10.2026', '8 October 2026'])('P3 supported token %s', raw => expect(parseDateToken(raw)?.date).toBe('2026-10-08'));
+it.each(['31/02/2026', '00/10/2026'])('P4 invalid token %s', raw => expect(parseDateToken(raw)).toBeNull());
+it('P5 actual repaired token and parsed field carry check flag', () => { expect(parseDateToken('O8/1O/2026')?.date).toBe('2026-10-08'); expect(parseReceipt(documentFromText('JUNIPER LANE GOODS\nOrder date: O8/1O/2026\nShirt 12.00')).purchaseDate).toMatchObject({ value: '2026-10-08', needsCheck: true, note: 'Some characters were guessed' }); });
+it.each([['1O.90', 1090, true], ['45.90', 4590, false], ['S$12.00', 1200, false]] as const)('P6 amount %s', (raw, cents, repaired) => expect(parseAmount(raw)).toEqual({ cents, repaired }));
+it('P7 demo items exclude totals and payment; preserve exact descriptions/amounts', () => {
+    const r = parseReceipt(documentFromText(receiptText));
+    expect(r.items.map(i => [i.id, i.description.value, i.amountCents.value])).toEqual([['item-1', 'Wireless Earbuds', 8900], ['item-2', 'Linen Shirt (M)', 4590], ['item-3', 'Stoneware Mug', 1850], ['item-4', 'Wool Scarf CLEARANCE FINAL SALE', 1200]]);
+    expect(r.totalCents.value).toBe(16540);
+    expect(r.warnings).toEqual([]);
+});
+it('P8 quantity does not multiply the displayed line amount', () => expect(parseReceipt(documentFromText('JUNIPER LANE GOODS\n2 x Cotton Socks 9.80')).items[0]).toMatchObject({ quantity: 2, description: { value: 'Cotton Socks' }, amountCents: { value: 980 } }));
+it('P9 missing date is warned and purchase-anchored results have no deadline', () => { const s = simple('All items return within 30 days of purchase.'); s.receipt = parseReceipt(documentFromText('JUNIPER LANE GOODS\nLinen Shirt 12.00')); expect(s.receipt.warnings).toContainEqual({ code: 'no_date_found' }); expect(computeCase(s, now).items[0]!.outcome).toEqual({ status: 'missing_input', field: 'purchaseDate', clauseId: 'c1' }); });
+it('P10 order date wins over printed date and ambiguity is warned', () => { const r = parseReceipt(documentFromText(receiptText + 'Printed 19/10/2026\n')); expect(r.purchaseDate.value).toBe('2026-10-08'); expect(r.purchaseDate.needsCheck).toBe(true); expect(r.warnings).toContainEqual({ code: 'multiple_dates_found', candidates: ['2026-10-08', '2026-10-19'] }); });
+it('confidence is taken from OCR lines and words; mismatch remains visible', () => { const doc = documentFromText('JUNIPER LANE GOODS\nOrder date: 25/10/2026\nShirt 12.00\nTOTAL 15.00'); doc.lines.forEach(l => { l.confidence = 60; l.words = [{ text: l.text, confidence: 50, bbox: { x0: 0, y0: 0, x1: 1, y1: 1 } }]; }); const r = parseReceipt(doc); expect(r.store.confidence).toBe(60); expect(r.items[0]!.description.confidence).toBe(50); expect(r.items[0]!.description.needsCheck).toBe(true); expect(r.warnings).toContainEqual({ code: 'items_total_mismatch', itemsCents: 1200, totalCents: 1500 }); expect(r.warnings).toContainEqual({ code: 'low_ocr_confidence', meanConfidence: 60 }); });
