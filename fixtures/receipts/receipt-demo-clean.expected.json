@@ -1,0 +1,30 @@
+{
+  "synthetic": true,
+  "author": "slot2 GPT-6.1 Sol",
+  "created": "2026-10-18T04:43:43.966Z",
+  "store": "JUNIPER LANE GOODS",
+  "purchaseDate": "2026-10-08",
+  "items": [
+    {
+      "description": "Wireless Earbuds",
+      "amountCents": 8900,
+      "quantity": 1
+    },
+    {
+      "description": "Linen Shirt (M)",
+      "amountCents": 4590,
+      "quantity": 1
+    },
+    {
+      "description": "Stoneware Mug",
+      "amountCents": 1850,
+      "quantity": 1
+    },
+    {
+      "description": "Wool Scarf CLEARANCE FINAL SALE",
+      "amountCents": 1200,
+      "quantity": 1
+    }
+  ],
+  "totalCents": 16540
+}
