@@ -1,6 +1,32 @@
 {
   "MIT": [
     {
+      "name": "@asamuzakjp/css-color",
+      "versions": [
+        "7.1.6"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@asamuzakjp+css-color@7.1.6/node_modules/@asamuzakjp/css-color"
+      ],
+      "license": "MIT",
+      "author": "asamuzaK",
+      "homepage": "https://github.com/asamuzaK/cssColor#readme",
+      "description": "CSS color - Resolve and convert CSS colors."
+    },
+    {
+      "name": "@asamuzakjp/dom-selector",
+      "versions": [
+        "10.0.3"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@asamuzakjp+dom-selector@10.0.3/node_modules/@asamuzakjp/dom-selector"
+      ],
+      "license": "MIT",
+      "author": "asamuzaK",
+      "homepage": "https://github.com/asamuzaK/domSelector#readme",
+      "description": "A CSS selector engine."
+    },
+    {
       "name": "@babel/code-frame",
       "versions": [
         "7.29.7"
@@ -248,6 +274,67 @@
       "description": "Babel Types is a Lodash-esque utility library for AST nodes"
     },
     {
+      "name": "@bramus/specificity",
+      "versions": [
+        "2.4.3"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@bramus+specificity@2.4.3/node_modules/@bramus/specificity"
+      ],
+      "license": "MIT",
+      "author": "Bramus Van Damme",
+      "homepage": "https://github.com/bramus/specificity#readme",
+      "description": "Calculate specificity of a CSS Selector"
+    },
+    {
+      "name": "@csstools/css-calc",
+      "versions": [
+        "3.4.3"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@csstools+css-calc@3.4.3_@csstools+css-parser-algorithms@4.0.2_@csstools+css-tokenizer@_5d0f8d745a07415aae8a65a2b2b89950/node_modules/@csstools/css-calc"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-calc#readme",
+      "description": "Solve CSS math expressions"
+    },
+    {
+      "name": "@csstools/css-color-parser",
+      "versions": [
+        "4.2.6"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@csstools+css-color-parser@4.2.6_@csstools+css-parser-algorithms@4.0.2_@csstools+css-to_3beec650aa1a03825a56f62de173c9bb/node_modules/@csstools/css-color-parser"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-color-parser#readme",
+      "description": "Parse CSS color values"
+    },
+    {
+      "name": "@csstools/css-parser-algorithms",
+      "versions": [
+        "4.0.2"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@csstools+css-parser-algorithms@4.0.2_@csstools+css-tokenizer@4.0.2/node_modules/@csstools/css-parser-algorithms"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-parser-algorithms#readme",
+      "description": "Algorithms to help you parse CSS from an array of tokens."
+    },
+    {
+      "name": "@csstools/css-tokenizer",
+      "versions": [
+        "4.0.2"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@csstools+css-tokenizer@4.0.2/node_modules/@csstools/css-tokenizer"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-tokenizer#readme",
+      "description": "Tokenize CSS"
+    },
+    {
       "name": "@esbuild/darwin-x64",
       "versions": [
         "0.28.2"
@@ -258,6 +345,19 @@
       "license": "MIT",
       "homepage": "https://github.com/evanw/esbuild#readme",
       "description": "The macOS 64-bit binary for esbuild, a JavaScript bundler."
+    },
+    {
+      "name": "@exodus/bytes",
+      "versions": [
+        "1.16.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@exodus+bytes@1.16.0/node_modules/@exodus/bytes"
+      ],
+      "license": "MIT",
+      "author": "Exodus Movement, Inc.",
+      "homepage": "https://github.com/ExodusOSS/bytes",
+      "description": "Various operations on Uint8Array data"
     },
     {
       "name": "@jridgewell/gen-mapping",
@@ -629,6 +729,19 @@
       "description": "Error constructor for test and validation frameworks that implements standardized AssertionError specification."
     },
     {
+      "name": "bidi-js",
+      "versions": [
+        "1.1.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/bidi-js@1.1.0/node_modules/bidi-js"
+      ],
+      "license": "MIT",
+      "author": "Jason Johnston",
+      "homepage": "https://github.com/lojjic/bidi-js#readme",
+      "description": "A JavaScript implementation of the Unicode Bidirectional Algorithm"
+    },
+    {
       "name": "bmp-js",
       "versions": [
         "0.1.0"
@@ -681,6 +794,19 @@
       "description": "Converts a source-map from/to  different formats and allows adding/changing properties."
     },
     {
+      "name": "css-tree",
+      "versions": [
+        "3.2.1"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/css-tree@3.2.1/node_modules/css-tree"
+      ],
+      "license": "MIT",
+      "author": "Roman Dvornov",
+      "homepage": "https://github.com/csstree/csstree#readme",
+      "description": "A tool set for CSS: fast detailed parser (CSS → AST), walker (AST traversal), generator (AST → CSS) and lexer (validation and matching) based on specs and browser implementations"
+    },
+    {
       "name": "csstype",
       "versions": [
         "3.2.3"
@@ -694,6 +820,19 @@
       "description": "Strict TypeScript and Flow types for style based on MDN data"
     },
     {
+      "name": "data-urls",
+      "versions": [
+        "8.0.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/data-urls@8.0.0/node_modules/data-urls"
+      ],
+      "license": "MIT",
+      "author": "Domenic Denicola",
+      "homepage": "https://github.com/jsdom/data-urls#readme",
+      "description": "Parses data: URLs"
+    },
+    {
       "name": "debug",
       "versions": [
         "4.4.3"
@@ -705,6 +844,19 @@
       "author": "Josh Junon",
       "homepage": "https://github.com/debug-js/debug#readme",
       "description": "Lightweight debugging utility for Node.js and the browser"
+    },
+    {
+      "name": "decimal.js",
+      "versions": [
+        "10.6.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/decimal.js@10.6.0/node_modules/decimal.js"
+      ],
+      "license": "MIT",
+      "author": "Michael Mclaughlin",
+      "homepage": "https://github.com/MikeMcl/decimal.js#readme",
+      "description": "An arbitrary-precision Decimal type for JavaScript."
     },
     {
       "name": "es-module-lexer",
@@ -809,6 +961,32 @@
       "description": "Allows users to use generators in order to write common functions that can be both sync or async."
     },
     {
+      "name": "html-encoding-sniffer",
+      "versions": [
+        "7.0.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/html-encoding-sniffer@7.0.0/node_modules/html-encoding-sniffer"
+      ],
+      "license": "MIT",
+      "author": "Domenic Denicola",
+      "homepage": "https://github.com/jsdom/html-encoding-sniffer#readme",
+      "description": "Sniff the encoding of an HTML or XML byte stream"
+    },
+    {
+      "name": "is-potential-custom-element-name",
+      "versions": [
+        "1.0.1"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/is-potential-custom-element-name@1.0.1/node_modules/is-potential-custom-element-name"
+      ],
+      "license": "MIT",
+      "author": "Mathias Bynens",
+      "homepage": "https://github.com/mathiasbynens/is-potential-custom-element-name",
+      "description": "Check whether a given string matches the `PotentialCustomElementName` production as defined in the HTML Standard."
+    },
+    {
       "name": "is-url",
       "versions": [
         "1.2.4"
@@ -832,6 +1010,18 @@
       "author": "Simon Lydell",
       "homepage": "https://github.com/lydell/js-tokens#readme",
       "description": "A regex that tokenizes JavaScript."
+    },
+    {
+      "name": "jsdom",
+      "versions": [
+        "30.1.3"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/jsdom@30.1.3/node_modules/jsdom"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/jsdom/jsdom#readme",
+      "description": "A JavaScript implementation of many web standards"
     },
     {
       "name": "jsesc",
@@ -950,6 +1140,19 @@
       "description": "Lightweight npm postinstall message to invite people to donate to your collective"
     },
     {
+      "name": "parse5",
+      "versions": [
+        "8.0.1"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/parse5@8.0.1/node_modules/parse5"
+      ],
+      "license": "MIT",
+      "author": "Ivan Nikulin",
+      "homepage": "https://parse5.js.org",
+      "description": "HTML parser and serializer."
+    },
+    {
       "name": "pathe",
       "versions": [
         "2.0.3"
@@ -986,6 +1189,19 @@
       "author": "Andrey Sitnik",
       "homepage": "https://postcss.org/",
       "description": "Tool for transforming styles with JS plugins"
+    },
+    {
+      "name": "punycode",
+      "versions": [
+        "2.3.1"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/punycode@2.3.1/node_modules/punycode"
+      ],
+      "license": "MIT",
+      "author": "Mathias Bynens",
+      "homepage": "https://mths.be/punycode",
+      "description": "A robust Punycode converter that fully complies to RFC 3492 and RFC 5891, and works on nearly all JavaScript platforms."
     },
     {
       "name": "pure-rand",
@@ -1048,6 +1264,19 @@
       "author": "Ben Newman",
       "homepage": "https://github.com/facebook/regenerator/tree/main#readme",
       "description": "Runtime for Regenerator-compiled generator and async functions."
+    },
+    {
+      "name": "require-from-string",
+      "versions": [
+        "2.0.2"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/require-from-string@2.0.2/node_modules/require-from-string"
+      ],
+      "license": "MIT",
+      "author": "Vsevolod Strukchinsky",
+      "homepage": "https://github.com/floatdrop/require-from-string#readme",
+      "description": "Require module from string"
     },
     {
       "name": "rollup",
@@ -1149,17 +1378,57 @@
       "description": "A small library to print colourful messages."
     },
     {
-      "name": "tr46",
+      "name": "tldts",
       "versions": [
-        "0.0.3"
+        "7.4.18"
       ],
       "paths": [
-        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/tr46@0.0.3/node_modules/tr46"
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/tldts@7.4.18/node_modules/tldts"
+      ],
+      "license": "MIT",
+      "author": "Rémi Berson",
+      "homepage": "https://github.com/remusao/tldts#readme",
+      "description": "Library to work against complex domain names, subdomains and URIs."
+    },
+    {
+      "name": "tldts-core",
+      "versions": [
+        "7.4.18"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/tldts-core@7.4.18/node_modules/tldts-core"
+      ],
+      "license": "MIT",
+      "author": "Rémi Berson",
+      "homepage": "https://github.com/remusao/tldts#readme",
+      "description": "tldts core primitives (internal module)"
+    },
+    {
+      "name": "tr46",
+      "versions": [
+        "0.0.3",
+        "7.0.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/tr46@0.0.3/node_modules/tr46",
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/tr46@7.0.0/node_modules/tr46"
       ],
       "license": "MIT",
       "author": "Sebastian Mayr",
-      "homepage": "https://github.com/Sebmaster/tr46.js#readme",
-      "description": "An implementation of the Unicode TR46 spec"
+      "homepage": "https://github.com/jsdom/tr46#readme",
+      "description": "An implementation of the Unicode UTS #46: Unicode IDNA Compatibility Processing"
+    },
+    {
+      "name": "undici",
+      "versions": [
+        "8.12.2"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/undici@8.12.2/node_modules/undici"
+      ],
+      "license": "MIT",
+      "homepage": "https://undici.nodejs.org",
+      "description": "An HTTP/1.1 client, written from scratch for Node.js"
     },
     {
       "name": "undici-types",
@@ -1205,7 +1474,7 @@
         "4.1.12"
       ],
       "paths": [
-        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/vitest@4.1.12_@types+node@24.19.2_vite@7.3.7_@types+node@24.19.2_/node_modules/vitest"
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/vitest@4.1.12_@types+node@24.19.2_jsdom@30.1.3_vite@7.3.7_@types+node@24.19.2_/node_modules/vitest"
       ],
       "license": "MIT",
       "author": "Anthony Fu",
@@ -1213,12 +1482,39 @@
       "description": "Next generation testing framework powered by Vite"
     },
     {
-      "name": "whatwg-url",
+      "name": "w3c-xmlserializer",
+      "versions": [
+        "6.0.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/w3c-xmlserializer@6.0.0/node_modules/w3c-xmlserializer"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/jsdom/w3c-xmlserializer#readme",
+      "description": "A per-spec XML serializer implementation"
+    },
+    {
+      "name": "whatwg-mimetype",
       "versions": [
         "5.0.0"
       ],
       "paths": [
-        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/whatwg-url@5.0.0/node_modules/whatwg-url"
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/whatwg-mimetype@5.0.0/node_modules/whatwg-mimetype"
+      ],
+      "license": "MIT",
+      "author": "Domenic Denicola",
+      "homepage": "https://github.com/jsdom/whatwg-mimetype#readme",
+      "description": "Parses, serializes, and manipulates MIME types, according to the WHATWG MIME Sniffing Standard"
+    },
+    {
+      "name": "whatwg-url",
+      "versions": [
+        "5.0.0",
+        "17.3.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/whatwg-url@5.0.0/node_modules/whatwg-url",
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/whatwg-url@17.3.0/node_modules/whatwg-url"
       ],
       "license": "MIT",
       "author": "Sebastian Mayr",
@@ -1237,6 +1533,19 @@
       "author": "Mathias Buus",
       "homepage": "https://github.com/mafintosh/why-is-node-running",
       "description": "Node is running but you don't know why? why-is-node-running is here to help you."
+    },
+    {
+      "name": "xmlchars",
+      "versions": [
+        "2.2.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/xmlchars@2.2.0/node_modules/xmlchars"
+      ],
+      "license": "MIT",
+      "author": "Louis-Dominique Dubeau",
+      "homepage": "https://github.com/lddubeau/xmlchars#readme",
+      "description": "Utilities for determining if characters belong to character classes defined by the XML specs."
     },
     {
       "name": "zlibjs",
@@ -1263,6 +1572,32 @@
       "author": "Colin McDonnell",
       "homepage": "https://zod.dev",
       "description": "TypeScript-first schema declaration and validation library with static type inference"
+    }
+  ],
+  "MIT-0": [
+    {
+      "name": "@csstools/color-helpers",
+      "versions": [
+        "6.1.2"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@csstools+color-helpers@6.1.2/node_modules/@csstools/color-helpers"
+      ],
+      "license": "MIT-0",
+      "homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/color-helpers#readme",
+      "description": "Color helpers to ease transformation between formats, gamut, etc"
+    },
+    {
+      "name": "@csstools/css-syntax-patches-for-csstree",
+      "versions": [
+        "1.1.15"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@csstools+css-syntax-patches-for-csstree@1.1.15_css-tree@3.2.1/node_modules/@csstools/css-syntax-patches-for-csstree"
+      ],
+      "license": "MIT-0",
+      "homepage": "https://github.com/csstools/postcss-plugins/tree/main/packages/css-syntax-patches-for-csstree#readme",
+      "description": "CSS syntax patches for CSS tree"
     }
   ],
   "Apache-2.0": [
@@ -1404,6 +1739,19 @@
       "author": "Surma",
       "homepage": "https://github.com/GoogleChromeLabs/wasm-feature-detect#readme",
       "description": "A small library to detect which features of WebAssembly are supported in your current browser."
+    },
+    {
+      "name": "xml-name-validator",
+      "versions": [
+        "5.0.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/xml-name-validator@5.0.0/node_modules/xml-name-validator"
+      ],
+      "license": "Apache-2.0",
+      "author": "Domenic Denicola",
+      "homepage": "https://github.com/jsdom/xml-name-validator#readme",
+      "description": "Validates whether a string matches the production for an XML name or qualified name"
     }
   ],
   "CC-BY-4.0": [
@@ -1462,6 +1810,19 @@
       "description": "The tiniest and the fastest library for terminal output formatting with ANSI colors"
     },
     {
+      "name": "saxes",
+      "versions": [
+        "6.0.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/saxes@6.0.0/node_modules/saxes"
+      ],
+      "license": "ISC",
+      "author": "Louis-Dominique Dubeau",
+      "homepage": "https://github.com/lddubeau/saxes#readme",
+      "description": "An evented streaming XML parser in JavaScript"
+    },
+    {
       "name": "semver",
       "versions": [
         "6.3.1"
@@ -1501,6 +1862,81 @@
       "description": "Yet Another Linked List"
     }
   ],
+  "BSD-2-Clause": [
+    {
+      "name": "entities",
+      "versions": [
+        "8.1.0"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/entities@8.1.0/node_modules/entities"
+      ],
+      "license": "BSD-2-Clause",
+      "author": "Felix Boehm",
+      "homepage": "https://github.com/fb55/entities#readme",
+      "description": "Encode & decode XML and HTML entities with ease & speed"
+    },
+    {
+      "name": "webidl-conversions",
+      "versions": [
+        "3.0.1",
+        "8.0.1"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/webidl-conversions@3.0.1/node_modules/webidl-conversions",
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/webidl-conversions@8.0.1/node_modules/webidl-conversions"
+      ],
+      "license": "BSD-2-Clause",
+      "author": "Domenic Denicola",
+      "homepage": "https://github.com/jsdom/webidl-conversions#readme",
+      "description": "Implements the WebIDL algorithms for converting to and from JavaScript values"
+    }
+  ],
+  "MPL-2.0": [
+    {
+      "name": "ical.js",
+      "versions": [
+        "2.2.1"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/ical.js@2.2.1/node_modules/ical.js"
+      ],
+      "license": "MPL-2.0",
+      "author": "Philipp Kewisch",
+      "homepage": "https://github.com/kewisch/ical.js#readme",
+      "description": "Javascript parser for ics (rfc5545) and vcard (rfc6350) data"
+    }
+  ],
+  "BlueOak-1.0.0": [
+    {
+      "name": "lru-cache",
+      "versions": [
+        "11.5.3"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/lru-cache@11.5.3/node_modules/lru-cache"
+      ],
+      "license": "BlueOak-1.0.0",
+      "author": "Isaac Z. Schlueter",
+      "homepage": "https://github.com/isaacs/node-lru-cache#readme",
+      "description": "A cache object that deletes the least-recently-used items."
+    }
+  ],
+  "CC0-1.0": [
+    {
+      "name": "mdn-data",
+      "versions": [
+        "2.27.1"
+      ],
+      "paths": [
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/mdn-data@2.27.1/node_modules/mdn-data"
+      ],
+      "license": "CC0-1.0",
+      "author": "Mozilla Developer Network",
+      "homepage": "https://developer.mozilla.org",
+      "description": "Open Web data by the Mozilla Developer Network"
+    }
+  ],
   "BSD-3-Clause": [
     {
       "name": "source-map-js",
@@ -1514,21 +1950,19 @@
       "author": "Valentin 7rulnik Semirulnik",
       "homepage": "https://github.com/7rulnik/source-map-js",
       "description": "Generates and consumes source maps"
-    }
-  ],
-  "BSD-2-Clause": [
+    },
     {
-      "name": "webidl-conversions",
+      "name": "tough-cookie",
       "versions": [
-        "3.0.1"
+        "6.0.2"
       ],
       "paths": [
-        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/webidl-conversions@3.0.1/node_modules/webidl-conversions"
+        "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/tough-cookie@6.0.2/node_modules/tough-cookie"
       ],
-      "license": "BSD-2-Clause",
-      "author": "Domenic Denicola",
-      "homepage": "https://github.com/jsdom/webidl-conversions#readme",
-      "description": "Implements the WebIDL algorithms for converting to and from JavaScript values"
+      "license": "BSD-3-Clause",
+      "author": "Jeremy Stashewsky",
+      "homepage": "https://github.com/salesforce/tough-cookie",
+      "description": "RFC6265 Cookies and Cookie Jar for node.js"
     }
   ]
 }

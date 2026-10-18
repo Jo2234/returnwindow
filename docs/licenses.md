@@ -12,6 +12,8 @@ Status: installed-package metadata inspected; local Node OCR and PDF-text integr
 | @types/react | 19.3.0 | MIT | development only |
 | @types/react-dom | 19.3.0 | MIT | development only |
 | @vitejs/plugin-react | 5.2.0 | MIT | development only |
+| ical.js | 2.2.1 | MPL-2.0 | development only / independent calendar parser |
+| jsdom | 30.1.3 | MIT | development only / independent HTML parser |
 | fast-check | 4.10.2 | MIT | development only |
 | pdfjs-dist | 6.4.299 | Apache-2.0 | runtime / local asset |
 | react | 19.3.1 | MIT | runtime / local asset |
@@ -22,13 +24,15 @@ Status: installed-package metadata inspected; local Node OCR and PDF-text integr
 | vitest | 4.1.12 | MIT | development only |
 | zod | 4.6.7 | MIT | runtime / local asset |
 
-ical.js MPL-2.0 is dev-only. It is planned for the later export slice and is not installed in S2. jsdom is also deferred to that slice. All current direct package licence labels are OSI-approved; see the transitive data exception below.
+ical.js MPL-2.0 is dev-only; jsdom is also development only. Both were added for S3 independent parser tests and are not imported by the application. All current direct package licence labels are OSI-approved; see the transitive data exception below.
 
 ## Transitive licence flags
 
 - **caniuse-lite@1.0.30001816 — CC-BY-4.0: not an OSI-approved software licence.** A smaller version of caniuse-db, with only the essentials!
 
-The remaining resolved labels in the pnpm snapshot are MIT, Apache-2.0, ISC, BSD-2-Clause and BSD-3-Clause. This inventory reports package metadata, not a legal audit.
+- **mdn-data@2.27.1 — CC0-1.0: not OSI-approved; development-only MDN data pulled through jsdom CSS tooling.** Retained explicitly as a data-licence flag ([OSI FAQ on CC0](https://opensource.org/faq#cc-zero), checked 18 Oct 2026).
+
+The remaining resolved labels in the updated pnpm snapshot are MIT, MIT-0, Apache-2.0, ISC, BSD-2-Clause, BSD-3-Clause, MPL-2.0 and BlueOak-1.0.0. [MIT-0](https://opensource.org/license/mit-0) and [Blue Oak](https://opensource.org/license/BlueOak-1.0.0) are listed by OSI (checked 18 Oct 2026). This inventory reports package metadata, not a legal audit.
 
 ## OCR provenance and bytes
 

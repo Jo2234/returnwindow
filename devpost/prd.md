@@ -64,7 +64,7 @@ Source: scope.md > What "Working" Looks Like; lead plan §10.2.
 
 - Purchase 8 Oct 2026: shirt **7 Nov 2026** (30 days), mug **29 Oct 2026** (21 days), final-sale scarf **not returnable**, earbuds **waiting for your answer**. Exactly one question.
 - Answer delivery **10 Oct 2026**: earbuds **24 Oct 2026**; answer purchase: **22 Oct 2026**; answer Not sure: no computed date, earliest **22 Oct 2026**.
-- Correct misread purchase **6 Oct → 8 Oct**: shirt **5 Nov → 7 Nov**, mug **27 Oct → 29 Oct**. Delivery-anchored earbuds stay **24 Oct**. The change log records the correction.
+- Correct the real recorded misread purchase **5 Oct → 8 Oct**: shirt **4 Nov → 7 Nov**, mug **26 Oct → 29 Oct**. Answer delivery **10 Oct** before correcting purchase and verify delivery-anchored earbuds stay **24 Oct**. The change log records the correction (decision 10; the earlier 6 Oct target was not obtained).
 - No policy: clear refusal, no item dates, reminders disabled. Every displayed deadline links to its verbatim policy passage.
 - With the answered delivery sample, reminders contain three events; evidence contains the passages, answers and corrections.
 
