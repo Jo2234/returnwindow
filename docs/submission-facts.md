@@ -1,6 +1,6 @@
 # ReturnWindow — neutral submission facts
 
-Status: G3 local kernel/OCR/PDF accepted; S3 exports/persistence/polish implemented and targeted-tested, final full regression/production E2E/visual G4 review pending. These are factual preparation notes, not Johan's description or “what I learned”.
+Status: G3 local kernel/OCR/PDF accepted. S3 full local regression and production checks passed at b702e4fe5deb639185dea3ea6ff891029aff0aac: 131 unit tests, three timezone runs of 49, 13 OCR/adapter tests, production build and six E2E cases. Worker screenshot review completed; G4 acceptance and separate lead walkthrough remain pending. These are factual preparation notes, not Johan's description or “what I learned”.
 
 Audience: Singapore shoppers with mixed-item receipts and supplied English store policies. The product associates a separate supported return date with each item and quotes the exact policy passage. One question resolves an ambiguous clock; unsupported/conflicting/missing rules do not become guessed dates.
 
@@ -16,6 +16,6 @@ Limitations and gates:
 
 - Calendar dates use Asia/Singapore with purchase/delivery as day 0. Business days/holidays and condition interpretation are unsupported. Amounts are display-only; this is not legal advice or a refund calculator.
 - OCR can misread confidently. Users review flags, image/text and policy conditions. No real receipts or retailer identities appear in fixtures.
-- Optional scanned-PDF browser and separate browser-unmount scenarios remain unexercised. S3 final full tests/browser/screenshots remain pending; earlier G3 results do not prove changed UI/exports.
+- Optional scanned-PDF browser and separate browser-unmount scenarios remain unexercised. S3 verification is local automated/worker evidence, not G4 or Johan approval. The evidence table passage column wraps awkwardly in narrow views; G4 can request further polish.
 - Traineddata-specific upstream notice remains unverified; caniuse-lite CC-BY4.0 and dev-only mdn-data CC0 data flags are retained. Project code is MIT; ical.js MPL-2.0 is dev-only.
 - Human Calendar import, print review, final hands-on checks, narration/video, personal submission text, repository publication and registration/submission remain Johan's. Repository stays private. No users, impact statistics, interviews, personal learning outcomes or public acceptance are fabricated.

@@ -19,4 +19,4 @@ Do not press Start over and imply reload restores the old case. Start over delib
 
 Alarms: deadline 24 Oct → 20261023T010000Z; 7 Nov → 20261106T010000Z; 29 Oct → 20261028T010000Z. All-day events stay DATE. Store text in SUMMARY is the stored `JUNIPER LANE GOODS` verbatim. These are the approved pre-implementation specification corrections, not narration promises inferred from an untested calendar client.
 
-S3 production walkthrough/screenshots remain pending the final master grant and G4 review. Johan records the video, writes narration and submission/learning text, checks actual Calendar behavior, and decides public release. No public upload, registration or submission is authorized here.
+S3 automated production journey and actual worker screenshot review passed under the 18 Oct master grant at b702e4fe5deb639185dea3ea6ff891029aff0aac. G4 acceptance and the separately reserved lead walkthrough remain pending. Johan records the video, writes narration and submission/learning text, checks actual Calendar behavior, and decides public release. No public upload, registration or submission is authorized here.

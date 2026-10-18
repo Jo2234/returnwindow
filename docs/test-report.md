@@ -1,6 +1,6 @@
 # ReturnWindow verification record
 
-18 October 2026. S3 draft: **targeted checks passed; final full regression/build/E2E and visual review are pending an explicit master grant.** Slices 4–5 remain unchecked. A passing S2 result is not claimed as verification of the changed S3 app.
+18 October 2026. **S3 local verification passed** at b702e4fe5deb639185dea3ea6ff891029aff0aac under explicit master grant heavy-basics-s3-slot2-20261018-1342. All six commands exited 0: 131 unit tests, three timezone runs of49, 13 OCR/adapter tests, production build and six E2E cases. Worker review of all seven actual viewport screenshots completed. G4 acceptance/separate lead walkthrough remain pending; slices4–5 and all Johan boxes stay unchecked until their respective acceptance. Earlier drafting entries below remain historical records, not present failures.
 
 ## Authorship and baseline
 
@@ -22,9 +22,9 @@ Base main: e8d603c (S2 merged). Prior G3 accepted evidence: 23af61860c9700a5dc40
 
 No timing benchmark is claimed for these small checks; contemporaneous uptime was not captured for their individual durations. A read command initially used a missing persistent cwd binding and failed before reading files; repeated with the absolute worktree path. One CSS patch was rejected before any edit due to duplicate file operations and was reapplied correctly. No test assertion was weakened to match application output, no test was skipped, and no fixture was regenerated.
 
-## Required final commands — not yet run on S3
+## Granted full verification — passed
 
-A fresh unique explicit master grant naming this worker and exact commands is mandatory. Request one bounded sequential batch, stop on first failure, no automatic retries:
+Grant heavy-basics-s3-slot2-20261018-1342 named this original slot2 worker, clean b702e4f and both pinned test/config hashes. The following exact sequential batch ran once, with stop-first-command-failure/no-retry conditions:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -35,7 +35,7 @@ pnpm test:ocr
 pnpm test:e2e
 ```
 
-The last command internally runs `pnpm build && pnpm preview` via Playwright's webServer config; one Chromium worker, retries 0, loopback 4188 only. The worker will report start PID/checkout/load, each exit, failures/skips, uptime with timings and descendant/group/port cleanup. The master alone releases the reservation. No fixture rendering is requested.
+The last command successfully ran its internal `pnpm build && pnpm preview` via Playwright webServer; one Chromium worker, six serial cases, maxFailures1/retries0, loopback4188 only. The worker reported start/results/cleanup to lead and master. The master alone releases the reservation. No fixture rendering, extra browser/server or additional heavyweight command ran.
 
 ## Acceptance coverage
 
@@ -45,11 +45,11 @@ The last command internally runs `pnpm build && pnpm preview` via Playwright's w
 - E2 / X1–X7: drafted production E2E exercises actual05→08, pre04Nov/26Oct, delivery answer before correction and earbuds24Oct invariant; three-event download; print-hidden controls; refusal; unsure; reload; deliberate clear surviving another reload; keyboard; zero other-origin page/worker/core/model requests; desktop/mobile screenshots. Additional PDF/blank/cancel/replacement regression keeps the S2 lifecycle checks.
 - Imageless storage is validated with Zod 4: dates, confidence, unique item ids, strict fields, P1 policy spans and kind/window consistency. Corrupt state is removed; Start over clears immediately and cancels pending debounced writes.
 
-## Visual review — pending
+## Actual viewport review
 
-X7 records **viewport screenshots**, not just full-page captures: 1280×800 start, workspace, question and evidence; 390×844 start/workspace/evidence. Files will be generated in ignored test-results/screens/ and copied to /tmp/basics-slot2-s3-shots/ after the granted run. None has been generated or visually reviewed yet for S3. README's screenshot link targets that generated local artifact and will exist only after successful X7 execution.
+X7 recorded **viewport screenshots**, not full-page substitutes: 1280×800 start, workspace, question and evidence; 390×844 start/workspace/evidence. All seven were copied from ignored test-results/screens/ to /tmp/basics-slot2-s3-shots/ and visually inspected by the worker. README links the generated local desktop artifact, which now exists. Screenshots are not committed.
 
-Desktop layout allocates bounded independently scrollable columns, a compact receipt preview and a full-image dialog. The action area has its own normal-flow region to prevent overlapping the scrollable workspace; mobile actions are static. E2E asserts action geometry and no horizontal overflow. These remain implementation intentions until the actual screenshots are inspected.
+Observed desktop: compact receipt with full-image access; earbuds24Oct/shirt7Nov/mug29Oct visible after correction, dates and action bar separated without overlap. The initial question image shows05Oct/shirt4Nov/mug26Oct. The lower scarf card and receipt details remain reachable through independent column scrolling. Observed mobile: stacked panels, readable item dates, static actions and no horizontal overflow. Evidence displays its table and print/download controls; its narrow passage column wraps awkwardly at both sizes, especially390px. This is recorded for G4 review, not silently declared polished. No application/CSS change followed this run.
 
 ## Contrast calculation
 
@@ -91,3 +91,39 @@ Latest drafting checks: `pnpm vitest run tests/unit/persist.test.ts --maxWorkers
 A final source-review addition labels expired computed dates “Closed” in evidence and uses human-readable refusal reasons in export exclusions. `pnpm vitest run tests/unit/evidence.test.ts --maxWorkers=1` then passed 5/5 including the independent closed24Oct / still-open29Oct assertion; the ICS single-file check passed5/5 again. No existing expectation or fixture was removed or weakened. E2E now also drafts corrupt-save toast/removal and manual receipt recovery. Six tests remain, maxFailures1/retries0; stopping the suite after its first failure does not mark the unexecuted checks as passed.
 
 Final drafting `pnpm typecheck` passed with the latest source/tests; start uptime13:38SGT, up9days2:22, load2.47/2.60/2.95. This is a light static check; no S3 production build or browser review is implied.
+
+## Grant receipt and observed counts
+
+Execution05:43:38–05:44:18Z, approximately40s, no overrun of180s estimate. Preflight13:43SGT: up9days2:27, load2.56/2.59/2.83, memory43% free,4188 clear. Raw logs /tmp/basics-slot2-s3-grant-1342/{status,1,2,3,4,5,6}.log. All exits0, no failures/skips/retries.
+
+| Exact command | Result | Observed duration | Start uptime/load |
+|---|---|---|---|
+| pnpm install --frozen-lockfile | Pass; lock current; pnpm12.11.2 |104ms reported|13:43 up9d2:27;2.46/2.56/2.81|
+| pnpm typecheck | Pass |05:43:39–05:43:42Z|13:43 up9d2:27;2.46/2.56/2.81|
+| pnpm test |131/131;10files|3.01s|13:43 up9d2:27;2.46/2.56/2.81|
+| pnpm test:tz |49/49 UTC,49/49 America/Los_Angeles,49/49 Pacific/Kiritimati|801/841/875ms|13:43 up9d2:27;2.66/2.60/2.83|
+| pnpm test:ocr |13/13;2files, real O1–O4 unchanged|4.23s total;3.65s test execution|13:43 up9d2:27;3.09/2.69/2.86|
+| pnpm test:e2e |6/6; includes successful build/preview|22.1s|13:43 up9d2:27;2.92/2.66/2.85|
+
+End13:44SGT up9d2:28, load3.73/2.88/2.92. OCR per-O console durations were again absent from captured Vitest output; no individual values are invented. The real recording durations842/854ms with contemporaneous uptime remain the earlier G3 fixture evidence, not new S3 timings.
+
+E2E hook wall measurements (actual, include hook overhead): integrated X1/X4/X5/X7 4388ms; X2 402ms; X3 532ms; X6 1962ms; mobile X7 819ms; S2 input regression3701ms. Corresponding uptime is13:44 up9d2:28, load3.86/2.87/2.92 before the first and3.79/2.87/2.92 through keyboard, then3.73/2.88/2.92 for mobile/input. These are observations on the shared machine, not performance claims.
+
+Production build emitted upstream Zod PURE-comment annotation warnings (Rollup removes those comments) and NO_COLOR/FORCE_COLOR environment warnings. Build and all tests still exited0; browser console/page errors were empty. No CSP relaxation was made.
+
+X4-network.json reports passed=true/stage=complete,20 requests (including same-origin blobs), one same-origin OCRworkerURL, zero other-origin requests and errors[]. Actual request evidence includes self-hosted worker/core/model. Exact production CSP is stored in the JSON. X1 verified three downloaded all-day ICS events and the three independent UTC alarm instants; HTML download included embedded PNG, escaped evidence and changes. Print emulation hid controls. Reload/restoration, permanent clear across reload and invalid-save clearing passed. Other E2E cases verified refusal/disabled export, unsure/two events, keyboard focus,390px geometry, exact PDF amounts and paste/manual recovery/cancel/replacement cleanup.
+
+## Screenshot inventory and cleanup
+
+All paths below are under /tmp/basics-slot2-s3-shots/ and also remain in ignored test-results/screens/:
+
+- X7-start-1280x800.png
+- X7-question-1280x800.png
+- X7-workspace-1280x800.png
+- X7-evidence-1280x800.png
+- X7-start-390x844.png
+- X7-workspace-390x844.png
+- X7-evidence-390x844.png
+- X4-network.json
+
+Verified cleanup: runner69416; unit processes69509/69510/69516/69517/69525/69526/69527; E2E69751/69752/69758/69759; webServer/build69772/69773/69779/69790/69792; preview69837/69843/69854/69855/69863; worker69870; Chromium69881/69882/69883/69884 all absent. No owned groups69416/69772/69779/69790/69843/69854/69881 remained;4188 had no listener; no matching Basics preview/test/OCR or cachedChromium1248 process. Pre-existing shared T3 browser was untouched. Master alone releases the reservation. Source and both pinned hashes remained unchanged after execution; subsequent changes are documentation only.
