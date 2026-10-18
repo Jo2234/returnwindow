@@ -1,6 +1,6 @@
 # ReturnWindow verification record
 
-18 October 2026. **S3 local verification passed** at b702e4fe5deb639185dea3ea6ff891029aff0aac under explicit master grant heavy-basics-s3-slot2-20261018-1342. All six commands exited 0: 131 unit tests, three timezone runs of49, 13 OCR/adapter tests, production build and six E2E cases. Worker review of all seven actual viewport screenshots completed. G4 acceptance/separate lead walkthrough remain pending; slices4–5 and all Johan boxes stay unchecked until their respective acceptance. Earlier drafting entries below remain historical records, not present failures.
+18 October 2026. **S3 local verification passed** at b702e4fe5deb639185dea3ea6ff891029aff0aac under explicit master grant heavy-basics-s3-slot2-20261018-1342. All six commands exited 0: 131 unit tests, three timezone runs of49, 13 OCR/adapter tests, production build and six E2E cases. Worker review of all seven actual viewport screenshots completed. G4 subsequently accepted32359b9; reviewed checklist-only94d1986 marked slices4–5 mechanically complete. All Johan/final-review/learning boxes remain unchecked. See the S4 integration addendum below. Earlier drafting entries below remain historical records, not present failures.
 
 ## Authorship and baseline
 
@@ -127,3 +127,11 @@ All paths below are under /tmp/basics-slot2-s3-shots/ and also remain in ignored
 - X4-network.json
 
 Verified cleanup: runner69416; unit processes69509/69510/69516/69517/69525/69526/69527; E2E69751/69752/69758/69759; webServer/build69772/69773/69779/69790/69792; preview69837/69843/69854/69855/69863; worker69870; Chromium69881/69882/69883/69884 all absent. No owned groups69416/69772/69779/69790/69843/69854/69881 remained;4188 had no listener; no matching Basics preview/test/OCR or cachedChromium1248 process. Pre-existing shared T3 browser was untouched. Master alone releases the reservation. Source and both pinned hashes remained unchanged after execution; subsequent changes are documentation only.
+
+## S4 exact-tree integration and artifact preparation
+
+Original slot1 merged reviewed 94d1986b23afe177720471a8baa33eb949eaaa59 as 84e00be46f096e5bb8cb2df512c2e106e94c9a11 without conflicts; immediate `git diff --exit-code 94d1986b23afe177720471a8baa33eb949eaaa59 HEAD` passed with an empty tree delta. Application/test/style/lock content equals tested b702e4fe5deb639185dea3ea6ff891029aff0aac; subsequent accepted and S4 changes are documentation only. No install/typecheck/test/TZ/OCR/build/browser rerun was authorized or performed in S4.
+
+Native G4 download metadata succeeded (ICS 3031 B / HTML 473344 B), but the lead closed the tab before retaining the temporary paths. Native payload read: **NOT COMPLETED**. No retained native payload copies are claimed. Acceptance relies separately on the passing reserved S3 actual downloaded-file reads, independent ical.js/HTML assertions and print-emulation checks plus the completed live G4 UI walkthrough. No assertion was waived, and no redundant browser rerun was performed.
+
+[G4 review](checkpoints/g4-review.md), [source review](checkpoints/s3-source-review.md) and [final handoff](final-handoff.md) preserve exact grants, SHAs, retained evidence paths and minor/optional limits. Static artifact and full reachable-history audit results are in [S4 audit](process/s4-audit.md); app-map browser visual check is [READY, not executed](process/s4-appmap-visual-request.md). No full5-build/6-ship or human release completion is claimed.

@@ -74,7 +74,7 @@ Fast mode reduces explanation, not verification or learner ownership. Later work
 
 - [ ] Final review complete — feedback resolved and learner confirms ready to ship. [JOHAN: hands-on check pending]
 
-No final review performed in Stage 0. Record actual feedback and any agreed revision items here; do not invent revisions or readiness.
+Agent technical final-review preparation completed in S4 using accepted G4 evidence and exact tree equivalence; see `docs/process/s4-skill-run-log.md` and `docs/final-handoff.md`. No learner final review, feedback or readiness confirmation has occurred. All human boxes remain unchecked.
 
 ## Code Tour and App Map
 
@@ -82,11 +82,11 @@ No final review performed in Stage 0. Record actual feedback and any agreed revi
 - [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
 - [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: Not started; Stage 0 is planning only. Personal learning goal is not established. Use actual code/test evidence after revisions; no learner mastery claimed.
-Route and stops: Not started; choose 2–3 actual paths/symbols from the finished app, never planned-only code.
-Edit outcome: Not offered; no implementation exists.
+Activity and evidence: S4 prepared `devpost/app-map.html` from tested source b702e4f / accepted94d1986. Source paths/symbols and offline HTML receive static checks only; new map browser review is READY, not run. No learner activity or mastery claimed.
+Route and stops: Reference only: `src/App.tsx` correct/prepareCorrection → `src/state/case-store.ts` caseReducer/useCaseStore (computeCase and ItemCard) → `src/domain/persist.ts` saveCase/loadCase/clearCase. Johan has not toured these stops.
+Edit outcome: Not offered; no optional learner edit performed.
 Reflection: Not offered; any personal answer belongs only in the ignored learner profile. [JOHAN: personal reflection pending]
-Activity mode: Not started.
+Activity mode: Source-grounded reference preparation only; actual learning activity/reflection and showing the map remain pending.
 
 ## Revisions
 
@@ -179,3 +179,5 @@ Activity mode: Not started.
 - Slices4–5 now mark mechanical completion only; every Johan hands-on/final review and learning-wrap-up box remains unchecked. G4 is a local release-candidate acceptance, not Johan's final approval, public release or judging/submission approval. The narrow evidence passage column remains a minor visual limitation accepted without changing the tested candidate. Optional scanned-PDF real-browser and separate unmount paths remain unexercised. Retain caniuse-lite CC-BY-4.0 data, traineddata-specific upstream attribution/provenance and dev-only mdn-data CC0 flags; none is silently resolved.
 
 - Lead download-retention limitation preserved: the native browser reported completed downloads with expected names (ICS3031 bytes,HTML473344 bytes), but temporary paths were absent after the lead closed the tab; no retained lead payload copies or byte inspection are claimed. Payload validation remains supported by the passing reserved S3 E2E helper that actually reads both files before teardown, independently parses three ICS events/exact UTC alarms and checks HTML disclosure/no scripts/no HTTP references/embedded image/05→08 changes plus print emulation, alongside independent unit tests. No assertion is waived and no rerun occurred. Calendar-app import and actual print/PDF review remain Johan's. The lead's rejected [exact=true] locator input was corrected from a fresh snapshot before acting; it was a tool-input error, not an application assertion failure. This follow-up changes only this checklist acceptance note and ticks; no application/style/test/assets changes, merge, push or heavy command. Existing slot1 integration follows lead settlement of this same worker.
+
+- S4 original slot1 integration: main merge 84e00be46f096e5bb8cb2df512c2e106e94c9a11 exactly equals approved 94d1986b23afe177720471a8baa33eb949eaaa59 before documentation additions. Agent-only final-review/audit and app-map preparation use installed 5-build/code-tour and technical parts of 6-ship under explicit Johan authorization. S3/G4 evidence is retained, including the native downloaded-byte read NOT COMPLETED (ICS3031B/HTML473344B metadata only), separately valid S3 file reads and independent parser/HTML/print assertions. No heavy command, learner final review, learner activity/reflection, browser map check or release occurred. All human and app-map-shown boxes remain unchecked. See `docs/process/s4-audit.md` and `docs/process/s4-appmap-visual-request.md`.
