@@ -10,12 +10,19 @@ const lexicon: readonly [
     ['home', 'home homeware homewares kitchen mug cup plate bowl towel bedding lamp cushion'],
     ['groceries', 'groceries grocery food snacks beverages perishable perishables'],
 ];
+// Build singular/plural aliases once; whole-word matching never matches “mugshot”.
+function forms(word:string):string[] {
+  const singular=word.endsWith('ies')?word.slice(0,-3)+'y':/(?:ches|shes|xes|zes|sses)$/.test(word)?word.slice(0,-2):word.endsWith('s')&&!word.endsWith('ss')?word.slice(0,-1):word;
+  const plural=/[^aeiou]y$/.test(singular)?singular.slice(0,-1)+'ies':/(?:s|x|z|ch|sh)$/.test(singular)?singular+'es':singular+'s';
+  return [word,singular,plural];
+}
+const matchers=lexicon.map(([category,words])=>({category,pattern:[...new Set(words.split(' ').flatMap(forms))].sort((a,b)=>b.length-a.length).join('|')}));
 export function categoriesInText(text: string): {
     category: Category;
     start: number;
     end: number;
 }[] {
-    return lexicon.flatMap(([category, words]) => [...text.matchAll(new RegExp(`\\b(?:${words.split(' ').sort((a, b) => b.length - a.length).join('|')})\\b`, 'gi'))].map(m => ({ category, start: m.index, end: m.index + m[0].length }))).sort((a, b) => a.start - b.start);
+    return matchers.flatMap(({category,pattern}) => [...text.matchAll(new RegExp(`\\b(?:${pattern})\\b`, 'gi'))].map(m => ({ category, start: m.index, end: m.index + m[0].length }))).sort((a, b) => a.start - b.start);
 }
 export function categorize(description: string): {
     value: Category;
