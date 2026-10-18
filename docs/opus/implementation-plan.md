@@ -3,6 +3,7 @@
 **Author:** Claude Opus 5.5 HIGH, project lead (specification and review only; writes no application code or tests).
 **Written:** 18 Oct 2026 SGT, inside the Build With AI: Basics submission period (22 Sep 2026 10:00 ET to 26 Oct 2026 17:00 ET).
 **Where this file lives:** it starts **outside** the project repo, at `$W/control/plans/basics/implementation-plan.md`, because the contest needs the repo to start from an empty folder and its first action to be the Devpost Learn Skill Pack install. After the skill pack has genuinely produced `devpost/scope.md`, `prd.md` and `spec.md`, slot 1 copies this file into `docs/opus/implementation-plan.md`, together with a note explaining what it is.
+**Revision:** amended 18 Oct 2026 at gate G1 (E5 wording, the §6 days-left example), per `docs/decisions/plan-vs-spec.md`.
 **Precedence:** the skill-pack documents (`devpost/scope.md`, `prd.md`, `spec.md`, `checklist.md`) are the **record** of the product. This plan is the engineering detail that must stay consistent with them. If they differ, the lead writes `docs/decisions/plan-vs-spec.md` that names each difference and says which side changes. Workers never silently pick one side.
 
 `W=/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016`. The repo is `$W/projects/basics` (branch `main`) and worktrees go in `$W/projects/basics-wt/slot<n>`. The private relay repo is `Jo2234/hackathon-2026-ai-basics`.
@@ -372,7 +373,7 @@ For each item:
 - **Invariant E2:** an item has a `deadline` iff `status === 'computed'`.
 - **Invariant E3:** every `clauseId` referenced exists in `policy.clauses`.
 - **Invariant E4:** a deadline is never before its start date, and `diffDays(start, deadline) === n` (or ×7) for day/week units.
-- **Invariant E5:** `.ics` events ⇔ `computed` items, one-to-one.
+- **Invariant E5 (amended at G1, see `docs/decisions/plan-vs-spec.md`):** `.ics` events ⇔ `computed` items whose deadline ≥ today, one-to-one; every other item is listed in `excluded` with a reason.
 
 ### 5.6 Receipt parsing (`receipt-parser.ts`)
 
@@ -402,7 +403,7 @@ Desktop-first at 1280×800 (video size), responsive to 390 px wide (P1 for under
 2. **Reading receipt (loading):** the receipt thumbnail, a progress bar driven by the tesseract logger ("Reading receipt on this device… 64%"), and **Cancel**. Text sources skip this state.
 3. **Workspace:** a three-column grid:
    - **Receipt (left, 30%):** the image with outlined OCR boxes for the store, date and items (`bbox` scaled). Below it, the extracted fields list: Store, Purchase date, Delivery date (if known) and items with amounts. Each row has an edit button. `needsCheck` rows have an amber "Check this" chip and their `note`. "Synthetic sample" badge when `sample`.
-   - **Deadlines (centre, 40%):** the question card at the top when `questions.length > 0`. Then one card per item: description; a category chip (editable select); a large deadline `Sat 7 Nov 2026`; "in 16 days" or "Last day today" or "Closed 2 days ago"; the basis line "30 days from purchase (Thu 8 Oct 2026) · passage ②"; and **Show passage**, which scrolls/flashes the policy highlight. Non-computed cards show their status headline and explanation:
+   - **Deadlines (centre, 40%):** the question card at the top when `questions.length > 0`. Then one card per item: description; a category chip (editable select); a large deadline `Sat 7 Nov 2026`; "in 18 days" or "Last day today" or "Closed 2 days ago"; the basis line "30 days from purchase (Thu 8 Oct 2026) · passage ②"; and **Show passage**, which scrolls/flashes the policy highlight. Non-computed cards show their status headline and explanation:
      - needs_answer: "Waiting for your answer: the policy doesn't say when this clock starts."
      - unsure: "Not computed. Earliest possible last day: Thu 22 Oct 2026 (if counted from purchase). Check with the store."
      - not_returnable: "Not returnable under passage ③ (final sale)."
