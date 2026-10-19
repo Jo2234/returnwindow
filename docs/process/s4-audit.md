@@ -36,7 +36,7 @@ Root LICENSE is MIT, Copyright (c) 2026 Jo2234. Installed Devpost pack remains M
 
 Read docs/licenses.md, docs/licenses.json, docs/ocr-assets.json and scripts/copy-ocr-assets.mjs; the accepted asset manifest has11 files/31334499 bytes, including3 distribution notice files. The script copies notices/workers/core/WASM/English traineddata from installed packages into ignored public/ocr; S4 did not run it, fetch packages or rehash a new build.
 
-Unresolved flags are retained exactly: caniuse-lite CC-BY-4.0 data; model-specific English traineddata upstream notice/provenance not independently substantiated by installed package metadata; dev-only mdn-data CC0-1.0 data. Existing package MIT/Apache attribution is not new proof of the model-specific notice. No unsupported resolution or public-release clearance.
+18 Oct snapshot (superseded by the19Oct disposition below): caniuse-lite CC-BY-4.0 data; model-specific English traineddata upstream notice/provenance not independently substantiated by installed package metadata; dev-only mdn-data CC0-1.0 data. Existing package MIT/Apache attribution is not new proof of the model-specific notice. No unsupported resolution or public-release clearance.
 
 ## App-map static validation
 
@@ -46,10 +46,14 @@ App-map:10710 UTF-8 bytes. SHA-256:
 
 `3cfd682f37da5c86229c854dd0be0f8086a4774a6efc5c92056fcf713035a1dc`
 
-This is source/HTML validation, not a browser/visual result. [Native preview proposal](s4-appmap-visual-request.md) READY; no browser/server started. Agent viewing later would still not satisfy showing it to Johan.
+The18Oct checks above were static only. Subsequent [19Oct native review](appmap-visual-review-20261019.md) passed under released grant0858, with original artifact hash retained. Agent viewing does not satisfy showing it to Johan.
 
 ## Evidence limits retained
 
 G4 native downloads reported success ICS3031 B/HTML473344 B, but paths disappeared after the tab was closed. Native payload read NOT COMPLETED; no retained native copies. Acceptance uses separately passed S3 actual file reads and independent ical.js/HTML/print checks plus live G4 UI observations. No assertion waived or redundant rerun. Raw /tmp/basics-g4-lead-walkthrough/, /tmp/basics-slot2-s3-{shots,grant-1342}/ and prior S2 failures remain untouched.
 
 Optional scanned-PDF browser and separate unmount scenarios remain unexercised; narrow evidence-table final-column wrapping remains a minor accepted visual limitation. All personal hands-on/final review/learning/Calendar/print/video/submission/release gates are pending. No final Astra judging pass. No export or push in this assignment; lead reviews artifacts before exporting.
+
+## 19 Oct follow-up disposition
+
+Agent native app-map visual validation passed on 19 Oct 2026 under heavy-basics-appmap-lead-20261019-0858 (master CLOSED/RELEASED PASS): desktop1280×800/mobile390×844, three retained screenshots, same-document navigation/details and keyboard focus, no overflow. Reviewed artifact SHA-2563cfd682f37da5c86229c854dd0be0f8086a4774a6efc5c92056fcf713035a1dc at source6b5a58d. Native network/console arrays were empty; server log records one local GET, so this is not exhaustive document-request capture. No remote request was observed. Johan viewing/learning/final review remains pending. Current text-only map amendment preserves CSS/tag structure; no duplicate run. Exact model file/licence provenance is now substantiated, not still an unresolved upstream-chain claim: see [the investigation](../notices/provenance-investigation-20261019.md). Distinct npm MIT / model Apache-2.0 and build/test CC BY4.0 / CC0 terms remain recorded. The source tree carries complete notices; adding a separate model-data notice pair to generated static output remains a narrow proposed packaging step, not a completed rebuild. No legal clearance.

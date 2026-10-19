@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-19T00:58:50.880911+00:00",
+  "grantId": "heavy-basics-appmap-lead-20261019-0858",
+  "readEvidence": [
+    "start.json",
+    "cleanup.json"
+  ],
+  "actuallyViewed": [
+    "desktop-top.png",
+    "desktop-bottom.png",
+    "mobile.png"
+  ],
+  "source": "6b5a58d362d9936d73122a199d77c3217d4fa6f8",
+  "finding": "Scoped app-map visual pass; visible text readable and responsive in reviewed screenshots. Human learner activity unclaimed.",
+  "pidPpidPgid35732": [],
+  "port4190": "independently no listener",
+  "tabAbsence": "lead native receipt; not independent renderer proof",
+  "networkLimit": "Native arrays empty; server local GET only, not exhaustive document-request capture",
+  "status": "closed/released PASS"
+}

@@ -8,7 +8,7 @@ ReturnWindow is a local browser app for Singapore shoppers with mixed-item recei
 
 The actual desktop workspace screenshot from the successful S3 production run at b702e4fe5deb639185dea3ea6ff891029aff0aac is retained on RP at `/tmp/basics-slot2-s3-shots/X7-workspace-1280x800.png`. It is not committed. Running the granted E2E command generates the local ignored `test-results/screens/X7-workspace-1280x800.png`; a fresh checkout has no screenshot at that path.
 
-The [reference app map](devpost/app-map.html) follows an actual purchase-date correction into results and imageless persistence. It is statically checked only: browser visual review, showing it to Johan and the learning activity remain pending. See the [S4 audit](docs/process/s4-audit.md) and [technical video checklist](docs/video-checklist.md).
+The [reference app map](devpost/app-map.html) follows an actual purchase-date correction into results and imageless persistence. Agent native desktop/mobile visual/navigation/focus checks passed on 19 Oct under the released 0858 grant; [the scoped review](docs/process/appmap-visual-review-20261019.md) preserves the tested artifact hash and network-capture limits. Johan viewing and the learning activity remain pending. See the [S4 audit](docs/process/s4-audit.md) and [technical video checklist](docs/video-checklist.md).
 
 ## Run locally
 
@@ -62,6 +62,8 @@ The repository started empty on18 Oct 2026; its first action installed the [Devp
 
 Claude Opus 5.5 HIGH authored the original plan and G1/G2 reviews. GPT-6 Astra HIGH is the authorized quota-fallback specification/review lead for G3/G4 and decisions 8–11. GPT-6.1 Sol HIGH implements the application and tests. Neither planning lead writes implementation. The original plan was written outside the repo during the submission window and [copied into docs/opus after skill generation](docs/opus/README.md). See the [process record](docs/process/skill-pack-run-log.md). No pre-existing application code was incorporated.
 
-React/Vite/TypeScript provide the interface and build; Tesseract/PDF.js provide local extraction; Zod validates storage. Vitest/fast-check test the kernel, dev-only ical.js/jsdom independently parse exports, and Playwright tests production Chromium. [Licences and provenance](docs/licenses.md) retain traineddata upstream-notice verification, caniuse-lite CC-BY4.0 data and dev-only mdn-data CC0 data flags. ical.js MPL-2.0 is dev-only. [MIT licence](LICENSE), ©2026 Jo2234.
+React/Vite/TypeScript provide the interface and build; Tesseract/PDF.js provide local extraction; Zod validates storage. Vitest/fast-check test the kernel, dev-only ical.js/jsdom independently parse exports, and Playwright tests production Chromium. [Licences and provenance](docs/licenses.md) record the now-substantiated Apache-2.0 model chain separately from npm-package MIT metadata, preserve caniuse-lite CC-BY4.0 / dev-only mdn-data CC0 notices and distinguish the pending static model-notice packaging step. See [supplementary notices](THIRD_PARTY_NOTICES.md). ical.js MPL-2.0 is dev-only. [MIT licence](LICENSE), ©2026 Jo2234.
 
 The repository stays private until Johan authorizes release. Video/narration, description, “what I learned”, personal review, Calendar import, public release and Devpost submission are human gates. Nothing has been registered, posted, deployed or publicly submitted by this worker.
+
+Private 19 Oct delivery drafts: [release notes](docs/delivery-20261019/release-notes.md), [storyboard](docs/delivery-20261019/demo-storyboard.md), [submission draft](docs/delivery-20261019/submission-draft.md). These retain Astra draft attribution, Sol factual amendments and Johan personal placeholders; no publication or human sign-off is claimed.

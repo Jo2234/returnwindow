@@ -28,7 +28,7 @@ Retained original evidence remains on RP:
 
 ## S4 artifacts
 
-- [App map](../devpost/app-map.html): actual three-stop purchase-correction/result/persistence route, source snapshot, change pointers and reusable falsifying-test example. Reference only; not toured/shown to Johan. Static validation only, browser review [READY proposal](process/s4-appmap-visual-request.md).
+- [App map](../devpost/app-map.html): actual three-stop purchase-correction/result/persistence route, source snapshot, change pointers and reusable falsifying-test example. Reference only; not toured/shown to Johan. Agent native visual review [passed19Oct](process/appmap-visual-review-20261019.md) under released grant0858; Johan viewing remains pending.
 - [Skill execution note](process/s4-skill-run-log.md): actual installed 5-build/code-tour and 6-ship technical preparation; human route/optional reflection/final review remain pending.
 - [Audit](process/s4-audit.md): full reachable-history/metadata/synthetic/license review, methods/counts and limits; no destructive cleanup.
 - [Technical video checklist](video-checklist.md): accepted choreography and exact05→08 evidence, no written narration.
@@ -38,7 +38,7 @@ Retained original evidence remains on RP:
 
 Actual synthetic purchase OCR05 Oct, ground truth08 Oct. Delivery10 Oct before correction gives earbuds24 Oct; purchase correction moves shirt04→07 Nov and mug26→29 Oct only. Evidence quotes verified policy passages; unsupported/missing/conflicting rules refuse dates. Absolute alarms encode09:00 SGT on the preceding day; Calendar-client import remains unverified by Johan. Imageless reload restores the saved case; Start over clears it and cannot be undone by reload.
 
-Optional scanned-PDF browser and separate browser-unmount scenarios remain unexercised. The evidence table's final column wraps narrowly at 390px; accepted as a minor visual limitation, not silently fixed. Retain traineddata-specific upstream-notice uncertainty, caniuse-lite CC-BY-4.0 data and dev-only mdn-data CC0-1.0 flags; no new provenance resolution claimed. No sponsor API.
+Optional scanned-PDF browser and separate browser-unmount scenarios remain unexercised. The evidence table's final column wraps narrowly at 390px; accepted as a minor visual limitation, not silently fixed. The former model-specific chain is now substantiated by pinned content identity and official Apache-2.0 licensing; [source notices](../THIRD_PARTY_NOTICES.md) preserve distinct package MIT and model/data terms. A generated static notice-pair copy remains proposed; no legal clearance. No sponsor API.
 
 ## Outstanding Johan gates
 
@@ -49,3 +49,7 @@ Installed skills do not authorize claiming full 5-build, learning-wrap-up or 6-s
 ## Delivery boundary
 
 No push, bundle export, publication, authentication change or conversation-history copy in this assignment. Lead reviews the final documentation head before exporting the tested checkpoint. No other worktree, branch, job or worker history is removed or modified.
+
+## 19 Oct resume amendments
+
+Agent native app-map visual validation passed on 19 Oct 2026 under heavy-basics-appmap-lead-20261019-0858 (master CLOSED/RELEASED PASS): desktop1280×800/mobile390×844, three retained screenshots, same-document navigation/details and keyboard focus, no overflow. Reviewed artifact SHA-2563cfd682f37da5c86229c854dd0be0f8086a4774a6efc5c92056fcf713035a1dc at source6b5a58d. Native network/console arrays were empty; server log records one local GET, so this is not exhaustive document-request capture. No remote request was observed. Johan viewing/learning/final review remains pending. New factual map text was not re-rendered; CSS/tag/attribute structure is unchanged, as specifically authorized. [Model/data investigation](notices/provenance-investigation-20261019.md) records exact hashes/revisions and attribution, with no model/fixture/lock replacement. Private [release notes](delivery-20261019/release-notes.md), [storyboard](delivery-20261019/demo-storyboard.md) and [submission draft](delivery-20261019/submission-draft.md) retain lead authorship and personal placeholders. Slot2 evidence-table work has not been integrated by slot1; its source/check acceptance must be coordinated with the lead. The S3 accepted checks and G4 missing native payload-read limitation above are unchanged.
