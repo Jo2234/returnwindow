@@ -34,6 +34,14 @@ for (const [pkg, source, destination] of assets) {
   await fs.writeFile(path.join(root, 'public/ocr', destination), data);
   manifest.push({ file: `/ocr/${destination}`, source: `${pkg}@${metadata.version}/${source}`, bytes: data.byteLength, sha256: createHash('sha256').update(data).digest('hex') });
 }
+// Model-data notices are local, source-reviewed files; package MIT metadata is separate.
+const modelNotices = ['eng-traineddata-NOTICE.txt', 'eng-traineddata-LICENSE-Apache-2.0.txt'];
+for (const destination of modelNotices) {
+  const source = `docs/notices/${destination}`;
+  const data = await fs.readFile(path.join(root, source));
+  await fs.writeFile(path.join(root, 'public/ocr', destination), data);
+  manifest.push({ file: `/ocr/${destination}`, source, bytes: data.byteLength, sha256: createHash('sha256').update(data).digest('hex') });
+}
 await fs.mkdir(path.join(root, 'docs'), { recursive: true });
 await fs.writeFile(path.join(root, 'docs/ocr-assets.json'), JSON.stringify({ engine: 'tesseract.js@7.0.0', lang: 'eng', langDataVersion: '@tesseract.js-data/eng@1.0.0/4.0.0', assets: manifest, totalBytes: manifest.reduce((n,a)=>n+a.bytes,0) }, null, 2)+'\n');
 console.log(`Copied ${manifest.length} local OCR assets (${manifest.reduce((n,a)=>n+a.bytes,0)} bytes); no network requests.`);

@@ -8,7 +8,7 @@ Accepted automated evidence:131unit,3×49timezone,13OCR/adapter,6productionE2E,i
 
 19October app-map check: native desktop1280×800/mobile390×844 visual/navigation/focus passed under heavy-basics-appmap-lead-20261019-0858; staticHTMLonly, no application/build/test run. Screenshots and cleanup retained. This does not establish Johan viewed the map or completed a learning exercise.
 
-Pending before final private package: review targeted evidence-table readability change and its bounded checks; review the integrated exact-byte OCR/data provenance and source notices; authorize/check the proposed two-file static notice copy; update clean source/tested commit distinctions; audit/export main-only bundle and publish-ready marker last. GitHub last confirmed e8d603c remains behind; relay owns writes and upload confirmation.
+Pending before final private package: review targeted evidence-table readability change and its bounded checks; review the integrated exact-byte OCR/data provenance and source notices; verify the implemented two-file static notice copier/manifest in the one combined slot2 build (syntax/deterministic checks already passed); update clean source/tested commit distinctions; audit/export main-only bundle and publish-ready marker last. GitHub last confirmed e8d603c remains behind; relay owns writes and upload confirmation.
 
 Remaining human gates: personal planning/final hands-on review; learning/reflection; Calendar import/actual print; video and submission review; explicit public release and submission. No public deployment or submitted entry is claimed.
 

@@ -38,7 +38,7 @@ Retained original evidence remains on RP:
 
 Actual synthetic purchase OCR05 Oct, ground truth08 Oct. Delivery10 Oct before correction gives earbuds24 Oct; purchase correction moves shirt04→07 Nov and mug26→29 Oct only. Evidence quotes verified policy passages; unsupported/missing/conflicting rules refuse dates. Absolute alarms encode09:00 SGT on the preceding day; Calendar-client import remains unverified by Johan. Imageless reload restores the saved case; Start over clears it and cannot be undone by reload.
 
-Optional scanned-PDF browser and separate browser-unmount scenarios remain unexercised. The evidence table's final column wraps narrowly at 390px; accepted as a minor visual limitation, not silently fixed. The former model-specific chain is now substantiated by pinned content identity and official Apache-2.0 licensing; [source notices](../THIRD_PARTY_NOTICES.md) preserve distinct package MIT and model/data terms. A generated static notice-pair copy remains proposed; no legal clearance. No sponsor API.
+Optional scanned-PDF browser and separate browser-unmount scenarios remain unexercised. The evidence table's final column wraps narrowly at 390px; accepted as a minor visual limitation, not silently fixed. The former model-specific chain is now substantiated by pinned content identity and official Apache-2.0 licensing; [source notices](../THIRD_PARTY_NOTICES.md) preserve distinct package MIT and model/data terms. The authorized static notice-pair copier/manifest amendment is implemented and lightly checked; fresh build-output verification remains pending the combined slot2 grant; no legal clearance. No sponsor API.
 
 ## Outstanding Johan gates
 

@@ -24,4 +24,4 @@ This is development/test data through jsdom → css-tree. No application source 
 
 ## Distribution status
 
-This source tree now carries the supplementary notices. The accepted S3 static build remains unchanged and has not been rebuilt: it does not yet contain a separate model-data notice pair. [The research report and minimal copy plan](docs/notices/provenance-investigation-20261019.md) distinguish that packaging follow-up from the now-substantiated upstream model licence chain.
+This source tree now carries the supplementary notices. The accepted S3 static build remains unchanged and has not been rebuilt: it does not yet contain a separate model-data notice pair. The authorized local copier/manifest amendment now adds that pair, with syntax/deterministic checks passed; fresh static-build output verification remains pending the combined slot2 run. [The research report](docs/notices/provenance-investigation-20261019.md) and [bounded copy receipt](docs/process/notice-packaging-20261019.md) distinguish that remaining packaging verification from the substantiated upstream model licence chain.

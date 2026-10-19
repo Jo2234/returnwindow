@@ -17,5 +17,6 @@ Credit: Tesseract tessdata contributors; Naptha/Tesseract.js data-package mainta
 ReturnWindow does not train, retune or modify these model bytes.
 Installed gzip SHA-256: ed350f3752f81ee8f38769edc14d92d997dababe23b565c59879372cc46a2468
 Decompressed model SHA-256: daa0c97d651c19fba3b25e81317cd697e9908c8208090c94c3905381c23fc047
-Git content addresses and byte lengths are recorded in eng-model-provenance.json.
+Source-repository record: docs/notices/eng-model-provenance.json contains the
+Git content addresses and byte lengths.
 No endorsement, warranty or legal clearance is asserted by this notice.

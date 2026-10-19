@@ -56,7 +56,7 @@ OCR can confidently misread text, so users must review the receipt, fields and c
 
 The G4 native walkthrough completed downloads but lost its temporary downloaded-file paths after tab closure; that lead byte inspection was not completed. Export acceptance uses the separately passing S3 actual-file assertions, not a claim that missing evidence was retained.
 
-19 October notice disposition: installed English model bytes match pinned Naptha/official tessdata content IDs, and the official model data licence is Apache-2.0, separate from npm-package MIT. Source notices retain Can I Use CC BY4.0 attribution and dev-only MDN CC0 terms. Static model-notice copying remains proposed; no legal clearance is claimed. The reference app-map passed scoped agent desktop/mobile visual checks, not Johan viewing. Slot2 evidence-table changes and their targeted result remain pending lead coordination before final package wording is updated.
+19 October notice disposition: installed English model bytes match pinned Naptha/official tessdata content IDs, and the official model data licence is Apache-2.0, separate from npm-package MIT. Source notices retain Can I Use CC BY4.0 attribution and dev-only MDN CC0 terms. The authorized two-file notice copier/manifest is implemented and passed syntax/deterministic checks; fresh static-build output verification remains pending the combined slot2 grant; no legal clearance is claimed. The reference app-map passed scoped agent desktop/mobile visual checks, not Johan viewing. Slot2 evidence-table changes and their targeted result remain pending lead coordination before final package wording is updated.
 
 ## Links and final declarations
 
