@@ -3,7 +3,7 @@ import { createRequire } from 'node:module';
 import { buildEvidenceHtml } from '../../src/domain/evidence';
 import { computeCase, DATE_CONVENTION } from '../../src/domain/engine';
 import { applyCorrection } from '../../src/domain/corrections';
-import { answered, now, policy } from './helpers';
+import { answered, civil, now, policy } from './helpers';
 const { JSDOM } = createRequire(import.meta.url)('jsdom');
 const documentOf = (html: string): Document => new JSDOM(html).window.document;
 it('E1 independent DOM parser verifies exact passages, offsets, fingerprint, answers, corrections and disclosure', () => {
@@ -59,4 +59,33 @@ it('E1 closed deadlines remain in evidence with an explicit closed status', () =
     const doc = documentOf(buildEvidenceHtml(s, computeCase(s, later), later, { receiptImageDataUrl: null }));
     expect(doc.querySelectorAll('tbody tr')[0]!.textContent).toContain('Closed — Sat 24 Oct 2026');
     expect(doc.body.textContent).toContain('Computed — Thu 29 Oct 2026');
+});
+it('E1 responsive rows retain semantic headers, all four results and the actual 05 → 08 correction', () => {
+    const original = answered('delivery', '2026-10-10');
+    original.receipt!.purchaseDate.value = civil('2026-10-05');
+    const before = documentOf(buildEvidenceHtml(original, computeCase(original, now), now, { receiptImageDataUrl: null }));
+    const statuses = (doc: Document) => [...doc.querySelectorAll('.item-results tbody tr')].map(row => row.querySelector('[headers="evidence-status"] .cell-value')!.textContent);
+    expect(statuses(before)).toEqual(['Computed — Sat 24 Oct 2026', 'Computed — Wed 4 Nov 2026', 'Computed — Mon 26 Oct 2026', 'Not returnable (final sale)']);
+    const applied = applyCorrection(original, { target: { field: 'purchaseDate' }, to: '08 Oct 2026', at: '2026-10-20T04:01:00Z' }, '2026-10-08');
+    if ('error' in applied)
+        throw new Error(applied.error.code);
+    const doc = documentOf(buildEvidenceHtml(applied.state, computeCase(applied.state, now), now, { receiptImageDataUrl: null }));
+    expect(statuses(doc)).toEqual(['Computed — Sat 24 Oct 2026', 'Computed — Sat 7 Nov 2026', 'Computed — Thu 29 Oct 2026', 'Not returnable (final sale)']);
+    expect([...doc.querySelectorAll('[headers="evidence-item"] .cell-value')].map(el => el.textContent)).toEqual([
+        'Wireless EarbudsSGD 89.00', 'Linen Shirt (M)SGD 45.90', 'Stoneware MugSGD 18.50', 'Wool Scarf CLEARANCE FINAL SALESGD 12.00',
+    ]);
+    expect([...doc.querySelectorAll('[headers="evidence-passage"] .cell-value')].map(el => el.textContent)).toEqual(['Passage 2', 'Passage 1', 'Passage 4', 'Passage 3']);
+    expect(doc.querySelector('[headers="change-value"] .cell-value')!.textContent).toBe('05 Oct 2026 → 08 Oct 2026');
+    for (const table of doc.querySelectorAll('table')) {
+        expect(table.getAttribute('role')).toBe('table');
+        expect(table.querySelector('thead')!.getAttribute('role')).toBe('rowgroup');
+        for (const cell of table.querySelectorAll('tbody td')) {
+            const header = doc.getElementById(cell.getAttribute('headers')!);
+            expect(header?.tagName).toBe('TH');
+            expect(header?.getAttribute('scope')).toBe('col');
+            expect(cell.getAttribute('role')).toBe('cell');
+            expect(cell.querySelector('.cell-label')!.textContent).toBe(header!.textContent);
+            expect(cell.querySelector('.cell-label')!.getAttribute('aria-hidden')).toBe('true');
+        }
+    }
 });
