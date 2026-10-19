@@ -1,0 +1,21 @@
+English traineddata supplied with ReturnWindow
+
+Component: @tesseract.js-data/eng@1.0.0, 4.0.0/eng.traineddata.gz.
+Package metadata declares MIT; that is not the licence of the upstream model data.
+The decompressed model is an exact Git-content match to eng.traineddata in
+tesseract-ocr/tessdata at ced78752cc61322fb554c280d13360b35b8684e4.
+The upstream README identifies repository data as Apache-2.0.
+See eng-traineddata-LICENSE-Apache-2.0.txt for the full licence.
+
+Source: https://github.com/tesseract-ocr/tessdata/blob/ced78752cc61322fb554c280d13360b35b8684e4/eng.traineddata
+Licence: https://github.com/tesseract-ocr/tessdata/blob/ced78752cc61322fb554c280d13360b35b8684e4/LICENSE
+README: https://github.com/tesseract-ocr/tessdata/blob/ced78752cc61322fb554c280d13360b35b8684e4/README.md
+Gzip distribution: https://github.com/naptha/tessdata/blob/b86746569320a6103cea84cc2b8d9ee74f0f45d3/4.0.0/eng.traineddata.gz
+Npm package: https://www.npmjs.com/package/@tesseract.js-data/eng/v/1.0.0
+Credit: Tesseract tessdata contributors; Naptha/Tesseract.js data-package maintainers.
+
+ReturnWindow does not train, retune or modify these model bytes.
+Installed gzip SHA-256: ed350f3752f81ee8f38769edc14d92d997dababe23b565c59879372cc46a2468
+Decompressed model SHA-256: daa0c97d651c19fba3b25e81317cd697e9908c8208090c94c3905381c23fc047
+Git content addresses and byte lengths are recorded in eng-model-provenance.json.
+No endorsement, warranty or legal clearance is asserted by this notice.

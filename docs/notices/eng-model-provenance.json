@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-10-19T01:01:01.189Z",
+  "method": "Hash installed bytes read-only; gzip decompression for hashing only, no model execution. Compare Git blob SHA-1 (git header plus byte length) and size with public GitHub API contents at immutable commits. Retain local SHA-256 separately. No remote model binary download.",
+  "package": {
+    "name": "@tesseract.js-data/eng",
+    "version": "1.0.0",
+    "declaredLicense": "MIT",
+    "npmGitHead": "b86746569320a6103cea84cc2b8d9ee74f0f45d3"
+  },
+  "installed": {
+    "relative": "4.0.0/eng.traineddata.gz",
+    "gzipBytes": 10923060,
+    "gzipSha256": "ed350f3752f81ee8f38769edc14d92d997dababe23b565c59879372cc46a2468",
+    "gzipGitBlobSha1": "e83c1267675ff3a6641b110002363782db7a1885",
+    "rawBytes": 23466654,
+    "rawSha256": "daa0c97d651c19fba3b25e81317cd697e9908c8208090c94c3905381c23fc047",
+    "rawGitBlobSha1": "f4744c201359d02ced6914c77f0de68ee9bbdd74"
+  },
+  "naptha": {
+    "revision": "b86746569320a6103cea84cc2b8d9ee74f0f45d3",
+    "path": "4.0.0/eng.traineddata.gz",
+    "gitBlobSha1": "e83c1267675ff3a6641b110002363782db7a1885",
+    "bytes": 10923060,
+    "url": "https://github.com/naptha/tessdata/blob/b86746569320a6103cea84cc2b8d9ee74f0f45d3/4.0.0/eng.traineddata.gz"
+  },
+  "officialTessdata": {
+    "revision": "ced78752cc61322fb554c280d13360b35b8684e4",
+    "path": "eng.traineddata",
+    "gitBlobSha1": "f4744c201359d02ced6914c77f0de68ee9bbdd74",
+    "bytes": 23466654,
+    "url": "https://github.com/tesseract-ocr/tessdata/blob/ced78752cc61322fb554c280d13360b35b8684e4/eng.traineddata",
+    "modelLicense": "Apache-2.0",
+    "licenseUrl": "https://github.com/tesseract-ocr/tessdata/blob/ced78752cc61322fb554c280d13360b35b8684e4/LICENSE",
+    "readmeUrl": "https://github.com/tesseract-ocr/tessdata/blob/ced78752cc61322fb554c280d13360b35b8684e4/README.md"
+  },
+  "gzipIdentityConfirmed": true,
+  "rawIdentityConfirmed": true,
+  "limitations": [
+    "GitHub publishes the Git SHA-1 content address here, not an independently retrieved SHA-256 of a second downloaded model.",
+    "No training-data rights audit, legal clearance, OCR execution or accuracy claim.",
+    "Naptha root LICENSE lookup at npm gitHead returned404; current pinned Naptha Apache-2.0 license and the exact decompressed official tessdata match independently establish the source-backed disposition."
+  ]
+}
