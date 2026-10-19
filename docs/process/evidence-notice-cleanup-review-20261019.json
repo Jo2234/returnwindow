@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-19T01:11:23.228362+00:00",
+  "reviewer": "GPT-6 Astra HIGH Basics lead",
+  "originalHarnessExit": 1,
+  "originalStatus": "fail",
+  "originalStage": "complete",
+  "originalCleanupErrors": [
+    {
+      "message": "Owned descendant process group not empty",
+      "groupMembers": [
+        {
+          "pid": 39238,
+          "ppid": 39184,
+          "pgid": 39238,
+          "birth": "Mon Oct 19 09:10:07 2026",
+          "command": "<defunct>"
+        }
+      ]
+    }
+  ],
+  "checkedPids": [
+    39063,
+    39184,
+    39238,
+    39243,
+    39249,
+    39255,
+    39256,
+    39265,
+    39270,
+    39272,
+    39283,
+    39284,
+    39290,
+    39307,
+    39318
+  ],
+  "checkedGroups": [
+    39063,
+    39184,
+    39238,
+    39249,
+    39255,
+    39272
+  ],
+  "subsequentMatches": [],
+  "lsofExit": 1,
+  "lsofOutput": "",
+  "releaseOwner": "master",
+  "repeatAuthorized": false
+}

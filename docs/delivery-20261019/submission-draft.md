@@ -36,7 +36,7 @@ An ambiguous policy clock needs an explicit answer rather than a guessed start d
 
 Calendar reminders required a specification correction: a relative alarm on an all-day event does not guarantee a fixed Singapore reminder time. The implementation uses explicit UTC alarm instants and independently parses the exported calendar in tests.
 
-The accepted S3 application passed 131 unit tests, 49 date/engine tests in each of three timezones, 13 OCR/adapter tests, six production E2E cases and a production build. The E2E checks read actual downloaded ICS/HTML bytes, and include no-policy refusal, uncertainty, correction, persistence and input recovery. These are local technical results on synthetic fixtures, not evidence of real-world OCR accuracy or user outcomes. Later targeted changes and checks must be listed in the final release notes before this draft is used.
+The accepted S3 application passed 131 unit tests, 49 date/engine tests in each of three timezones, 13 OCR/adapter tests, six production E2E cases and a production build. The E2E checks read actual downloaded ICS/HTML bytes, and include no-policy refusal, uncertainty, correction, persistence and input recovery. These are local technical results on synthetic fixtures, not evidence of real-world OCR accuracy or user outcomes. Later targeted checks and the combined6cd7b5c build are recorded separately in the final release notes; these historical suite counts are not claimed as a fresh run on6cd7b5c.
 
 ## What I learned
 
@@ -56,7 +56,7 @@ OCR can confidently misread text, so users must review the receipt, fields and c
 
 The G4 native walkthrough completed downloads but lost its temporary downloaded-file paths after tab closure; that lead byte inspection was not completed. Export acceptance uses the separately passing S3 actual-file assertions, not a claim that missing evidence was retained.
 
-19 October notice disposition: installed English model bytes match pinned Naptha/official tessdata content IDs, and the official model data licence is Apache-2.0, separate from npm-package MIT. Source notices retain Can I Use CC BY4.0 attribution and dev-only MDN CC0 terms. The authorized two-file notice copier/manifest is implemented and passed syntax/deterministic checks; fresh static-build output verification remains pending the combined slot2 grant; no legal clearance is claimed. The reference app-map passed scoped agent desktop/mobile visual checks, not Johan viewing. Slot2 evidence-table changes and their targeted result remain pending lead coordination before final package wording is updated.
+19 October notice disposition: installed English model bytes match pinned Naptha/official tessdata content IDs, and the official model data licence is Apache-2.0, separate from npm-package MIT. Source notices retain Can I Use CC BY4.0 attribution and dev-only MDN CC0 terms. The authorized two-file notice copier/manifest was built under0909 at6cd7b5c, with exact13-asset source/public/dist comparisons completed; no legal clearance is claimed. The reference app-map passed scoped agent desktop/mobile visual checks, not Johan viewing. The reviewed evidence layout now has legible Evidence/Passage N labels and full-width labelled mobile rows in the measured1280/390 views; print emulation retains tables and hides duplicate labels. Four screen/four print measurements and actual retained text-only HTML checks completed, but the pinned0909 harness remains FAIL/exit1 for a defunct-process cleanup snapshot. Later independent post-exit cleanup/master release is separate evidence; no retry, waiver or green-batch claim. Historical G4 missing native bytes remain missing.
 
 ## Links and final declarations
 
@@ -69,3 +69,5 @@ The G4 native walkthrough completed downloads but lost its temporary downloaded-
 
 ---
 Original private draft: GPT-6 Astra HIGH, from control/plans/basics/delivery-20261019/submission-draft.md. Original source SHA-256: b8995b1cf39ab9f93d542368cd1238bf8cd52679a216bc40870f6ad91b073948. Integration/factual notice-map amendments: GPT-6.1 Sol HIGH,19October2026. This is not Johan authorship, personal review, publication or submission.
+
+Technical source provenance: combined tested/reviewed6cd7b5c0418a6e06d8efd60a463fd8dac728bb7c, main integration64f8e339c2f4d7503e4d5612564bb3274c73a799, later docs-only finalization. Final package manifest supplies the final docs SHA. [Review](../process/evidence-notice-review-20261019.md) and [release notes](release-notes.md) retain exact evidence/limits.

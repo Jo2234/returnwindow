@@ -13,7 +13,7 @@ Visual plan from the accepted choreography; target about2½minutes is a producti
 | Portable output | Download three calendar reminders; inspect evidence results/passages/offsets/hash/changes | Calendar-client behavior must be actually checked before showing it; no fabricated import footage. |
 | Restore and close | Reload demonstrates imageless persistence; briefly show authentic scope/PRD/spec and reference map | Startover deliberately clears; never imply reload recovers a clearedcase. Personal learning remains Johan's narration. |
 
-Capture at1280×800 with all app text legible; use final reviewed evidence-table layout. Do not label the entry public/submitted. Final recording should show actual behavior; retained test screenshots are evidence, not a claim of a newly recorded session. Refresh shot list against latest reviewed commit before recording.
+Capture at1280×800 with all app text legible; use final reviewed evidence-table layout. Do not label the entry public/submitted. Final recording should show actual behavior; retained test screenshots are evidence, not a claim of a newly recorded session. Reference the reviewed combined source6cd7b5c for the legible evidence layout; its0909 screen/print checks completed, while raw harness FAIL/exit1 and separate later cleanup remain in release-notes.md. This fresh text-only validation did not rerun OCR; use the unchanged accepted sample/golden when actually recording. Refresh shot list against the final packaged source before recording.
 
 
 ---

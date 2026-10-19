@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-19T01:12:25.094185+00:00",
+  "grantId": "heavy-basics-evidence-notice-slot2-20261019-0909",
+  "rawStatus": "fail",
+  "stage": "complete",
+  "workFailure": null,
+  "cleanupErrors": [
+    {
+      "message": "Owned descendant process group not empty",
+      "groupMembers": [
+        {
+          "pid": 39238,
+          "ppid": 39184,
+          "pgid": 39238,
+          "birth": "Mon Oct 19 09:10:07 2026",
+          "command": "<defunct>"
+        }
+      ]
+    }
+  ],
+  "freshProcessMatches": [],
+  "portExit": 1,
+  "portOutput": "",
+  "head": "6cd7b5c0418a6e06d8efd60a463fd8dac728bb7c",
+  "status": "",
+  "rawResultSha256": "c46393a8ee7ec95180bb95f94f6b4f7b06e6acf112496717a243abca1561991a",
+  "payloadSha256": "046721f77bbe21aeca761ca49c0bd2b6be1735d1322b924f03f067b39cd837c9",
+  "disposition": "Harness FAILED retained; completed work assertions distinct from now verified post-exit cleanup"
+}

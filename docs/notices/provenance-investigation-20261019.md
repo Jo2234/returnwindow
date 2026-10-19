@@ -31,7 +31,7 @@ CC BY4.0 [section3(a)](https://creativecommons.org/licenses/by/4.0/legalcode.en#
 
 Installed mdn-data LICENSE (6,555bytes, SHA25636ffd9dc085d529a7e60e1276d73ae5a030b020313e6c5408593a6ae2af39673) exactly equals [upstream npm gitHead 8b1079528c02bd3eb6f180e47011cf2075849961](https://github.com/mdn/data/blob/8b1079528c02bd3eb6f180e47011cf2075849961/LICENSE). Its [pinned README](https://github.com/mdn/data/blob/8b1079528c02bd3eb6f180e47011cf2075849961/README.md) identifies MDN-maintained web data. Retain CC0-1.0 scope and the original notice; [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.en) uses a waiver/fallback, not a CC-BY attribution condition. No broad licence upgrades.
 
-## Minimal integration and authorized packaging amendment
+## Minimal integration and authorized packaging amendment (pre0909 snapshot; outcome below)
 
 Integrated docs-only files: docs/licenses.md, root THIRD_PARTY_NOTICES.md, and docs/notices/{eng-traineddata-NOTICE.txt,eng-traineddata-LICENSE-Apache-2.0.txt,eng-model-provenance.json,caniuse-lite-LICENSE-CC-BY-4.0.txt,mdn-data-LICENSE-CC0-1.0.txt,this report}. Original licence texts are unchanged. Source-only notices are reviewable now.
 
@@ -46,3 +46,7 @@ Public metadata/notices were fetched with25s/1MiB response bounds; source-cache/
 No legal clearance, public release or submission is declared. Human gates and the G4 native missing-download-byte limit remain unchanged.
 
 Notice fidelity: plain `git diff --cached --check` reports the original caniuse-lite LICENSE trailing space at line52. It is intentionally preserved for byte identity with the installed/upstream licence. Authored docs are checked separately with the three verbatim LICENSE files excluded; no persistent Git whitespace configuration is changed.
+
+## Subsequent0909 outcome
+
+Combined tested source6cd7b5c was built once under0909:13 assets31347373B, original11 plus exact two source/public/dist notices verified. This resolves the packaging verification previously pending above. The raw harness remains FAIL/exit1 at its defunct-process cleanup snapshot, with separately verified later post-exit cleanup/master release; no retry or waiver. [Reviewed outcome](../process/evidence-notice-review-20261019.md). The current integration only copies records/updates docs; model/notice/copier/manifest bytes equal tested6cd7b5c. No legal clearance.

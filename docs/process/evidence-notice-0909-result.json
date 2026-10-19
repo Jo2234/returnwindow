@@ -1,0 +1,450 @@
+{
+  "status": "fail",
+  "stage": "complete",
+  "failure": null,
+  "root": "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2",
+  "expectedHead": "6cd7b5c0418a6e06d8efd60a463fd8dac728bb7c",
+  "model": "GPT-6.1 Sol HIGH",
+  "run": "/tmp/basics-slot2-evidence-readability-shots/2026-10-19T01-10-06-717Z",
+  "pid": 39184,
+  "previewPid": 39238,
+  "currentURL": "file:///tmp/basics-slot2-evidence-readability-shots/2026-10-19T01-10-06-717Z/returnwindow-juniper-lane-goods-2026-10-08-evidence.html",
+  "payload": "/tmp/basics-slot2-evidence-readability-shots/2026-10-19T01-10-06-717Z/returnwindow-juniper-lane-goods-2026-10-08-evidence.html",
+  "requests": [
+    "http://127.0.0.1:4188/?today=2026-10-20",
+    "http://127.0.0.1:4188/assets/index-BLnE2eZC.js",
+    "http://127.0.0.1:4188/assets/index-BkVE35GY.css",
+    "file:///tmp/basics-slot2-evidence-readability-shots/2026-10-19T01-10-06-717Z/returnwindow-juniper-lane-goods-2026-10-08-evidence.html"
+  ],
+  "workerURLs": [],
+  "consoleErrors": [],
+  "csp": "default-src 'none'; img-src data:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+  "measurements": [
+    {
+      "label": "in-app-1280-screen",
+      "width": 1280,
+      "documentWidth": 1280,
+      "font": 14,
+      "passageSingleLines": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "evidenceSingleLine": true,
+      "clippedCells": [],
+      "rowWidths": [
+        843,
+        843,
+        843,
+        843
+      ],
+      "cellWidths": [
+        228,
+        219,
+        261,
+        135
+      ],
+      "tableWidth": 844,
+      "labels": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ]
+    },
+    {
+      "label": "in-app-1280-print",
+      "table": "table",
+      "row": "table-row",
+      "cell": "table-cell",
+      "headerPosition": "static",
+      "labelsHidden": true
+    },
+    {
+      "label": "in-app-390-screen",
+      "width": 390,
+      "documentWidth": 390,
+      "font": 14,
+      "passageSingleLines": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "evidenceSingleLine": true,
+      "clippedCells": [],
+      "rowWidths": [
+        350,
+        350,
+        350,
+        350
+      ],
+      "cellWidths": [
+        348,
+        348,
+        348,
+        348
+      ],
+      "tableWidth": 350,
+      "labels": [
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block"
+      ]
+    },
+    {
+      "label": "in-app-390-print",
+      "table": "table",
+      "row": "table-row",
+      "cell": "table-cell",
+      "headerPosition": "static",
+      "labelsHidden": true
+    },
+    {
+      "label": "downloaded-html-1280-screen",
+      "width": 1280,
+      "documentWidth": 1280,
+      "font": 14,
+      "passageSingleLines": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "evidenceSingleLine": true,
+      "clippedCells": [],
+      "rowWidths": [
+        899,
+        899,
+        899,
+        899
+      ],
+      "cellWidths": [
+        243,
+        234,
+        279,
+        144
+      ],
+      "tableWidth": 900,
+      "labels": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ]
+    },
+    {
+      "label": "downloaded-html-1280-print",
+      "table": "table",
+      "row": "table-row",
+      "cell": "table-cell",
+      "headerPosition": "static",
+      "labelsHidden": true
+    },
+    {
+      "label": "downloaded-html-390-screen",
+      "width": 390,
+      "documentWidth": 390,
+      "font": 14,
+      "passageSingleLines": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "evidenceSingleLine": true,
+      "clippedCells": [],
+      "rowWidths": [
+        334,
+        334,
+        334,
+        334
+      ],
+      "cellWidths": [
+        332,
+        332,
+        332,
+        332
+      ],
+      "tableWidth": 334,
+      "labels": [
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block",
+        "block"
+      ]
+    },
+    {
+      "label": "downloaded-html-390-print",
+      "table": "table",
+      "row": "table-row",
+      "cell": "table-cell",
+      "headerPosition": "static",
+      "labelsHidden": true
+    }
+  ],
+  "assetChecks": [
+    {
+      "file": "/ocr/worker.min.js",
+      "bytes": 111307,
+      "sha256": "576b7df7e3393e137e51849357c9adb53fe7ac1bb69bfa06cf3d61520f182c6d",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/worker.min.js.LICENSE.txt",
+      "bytes": 466,
+      "sha256": "45f54171aeaa1d10c0c1a66f374b7bba1f02472b1487fbe892eec04f840002ac",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/LICENSE-tesseract.js.txt",
+      "bytes": 11357,
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/LICENSE-tesseract.js-core.txt",
+      "bytes": 11358,
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/tesseract-core-lstm.wasm.js",
+      "bytes": 3896484,
+      "sha256": "eef5f8b2f8e20e150680b20adaec4a60babafee3adbe8a94583c81fee46e8680",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/tesseract-core-lstm.wasm",
+      "bytes": 2855361,
+      "sha256": "66b17df6e20c5329a17ffa9c202a47eaa3e32500b253d4c7f38e7f2bc01457c3",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/tesseract-core-simd-lstm.wasm.js",
+      "bytes": 3899472,
+      "sha256": "c58b46a4c796c0b8afccf77591d5b875b6896b45d402bbce8caa6f5362447b38",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/tesseract-core-simd-lstm.wasm",
+      "bytes": 2857601,
+      "sha256": "34e8d50cac216427d86bf397d610fdd9f49492539bbcdfbfccc4eda20c810bea",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/tesseract-core-relaxedsimd-lstm.wasm.js",
+      "bytes": 3905767,
+      "sha256": "861a536cf9ef8e63cb644d57bab39c388f37f7d6b6f60024b741c5f6b39a59b3",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/tesseract-core-relaxedsimd-lstm.wasm",
+      "bytes": 2862266,
+      "sha256": "7985c92d4c64e7267d24cadffe1b2a1da6bf8aa55fdcaf953fe94fe122a24545",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/eng.traineddata.gz",
+      "bytes": 10923060,
+      "sha256": "ed350f3752f81ee8f38769edc14d92d997dababe23b565c59879372cc46a2468",
+      "publicAndDistMatchAccepted": true
+    },
+    {
+      "file": "/ocr/eng-traineddata-NOTICE.txt",
+      "source": "docs/notices/eng-traineddata-NOTICE.txt",
+      "sourceCommit": "a830c7e24e44dc7571e9ca0369fb1ea9cee3c5c0",
+      "bytes": 1516,
+      "sha256": "bd25056b2ebb52f824e4abbbfec58a9d56651d56b53c23beef9c52fa57c20926",
+      "publicAndDistMatchSource": true
+    },
+    {
+      "file": "/ocr/eng-traineddata-LICENSE-Apache-2.0.txt",
+      "source": "docs/notices/eng-traineddata-LICENSE-Apache-2.0.txt",
+      "sourceCommit": "a830c7e24e44dc7571e9ca0369fb1ea9cee3c5c0",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "publicAndDistMatchSource": true
+    }
+  ],
+  "approvedPackagingCommit": "a830c7e24e44dc7571e9ca0369fb1ea9cee3c5c0",
+  "acceptedAssetCommit": "87441c5a01662d266a573f52fca1506833f8daa5",
+  "identities": [
+    {
+      "pid": 39238,
+      "ppid": 39184,
+      "pgid": 39238,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "/Users/johanvaz/.local/share/vite-plus/package_manager/pnpm/12.11.2/pnpm/bin/pnpm.native"
+    },
+    {
+      "pid": 39243,
+      "ppid": 39184,
+      "pgid": 39184,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "ps"
+    },
+    {
+      "pid": 39249,
+      "ppid": 39238,
+      "pgid": 39249,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "sh"
+    },
+    {
+      "pid": 39255,
+      "ppid": 39238,
+      "pgid": 39255,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "sh"
+    },
+    {
+      "pid": 39256,
+      "ppid": 39249,
+      "pgid": 39249,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "node"
+    },
+    {
+      "pid": 39265,
+      "ppid": 39256,
+      "pgid": 39249,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "/Users/johanvaz/Documents/Codex/2026-10-04/i-w/outputs/t3code-data/scratch/hackathon-workflow-20261016/projects/basics-wt/slot2/node_modules/.pnpm/@esbuild+darwin-x64@0.28.2/node_modules/@esbuild/darwin-x64/bin/esbuild"
+    },
+    {
+      "pid": 39270,
+      "ppid": 39184,
+      "pgid": 39184,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "ps"
+    },
+    {
+      "pid": 39272,
+      "ppid": 39184,
+      "pgid": 39272,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "/Users/johanvaz/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-x64/chrome-headless-shell"
+    },
+    {
+      "pid": 39283,
+      "ppid": 39272,
+      "pgid": 39272,
+      "birth": "Mon Oct 19 09:10:08 2026",
+      "command": "/Users/johanvaz/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-x64/chrome-headless-shell"
+    },
+    {
+      "pid": 39284,
+      "ppid": 39272,
+      "pgid": 39272,
+      "birth": "Mon Oct 19 09:10:08 2026",
+      "command": "/Users/johanvaz/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-x64/chrome-headless-shell"
+    },
+    {
+      "pid": 39290,
+      "ppid": 39184,
+      "pgid": 39184,
+      "birth": "Mon Oct 19 09:10:08 2026",
+      "command": "ps"
+    },
+    {
+      "pid": 39307,
+      "ppid": 39272,
+      "pgid": 39272,
+      "birth": "Mon Oct 19 09:10:10 2026",
+      "command": "/Users/johanvaz/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-x64/chrome-headless-shell"
+    },
+    {
+      "pid": 39318,
+      "ppid": 39184,
+      "pgid": 39184,
+      "birth": "Mon Oct 19 09:10:11 2026",
+      "command": "ps"
+    }
+  ],
+  "ownedGroups": [
+    39238,
+    39249,
+    39255,
+    39272
+  ],
+  "survivors": [],
+  "groupMembers": [
+    {
+      "pid": 39238,
+      "ppid": 39184,
+      "pgid": 39238,
+      "birth": "Mon Oct 19 09:10:07 2026",
+      "command": "<defunct>"
+    }
+  ],
+  "port4188Free": true,
+  "evidenceErrors": [],
+  "cleanupErrors": [
+    {
+      "message": "Owned descendant process group not empty",
+      "groupMembers": [
+        {
+          "pid": 39238,
+          "ppid": 39184,
+          "pgid": 39238,
+          "birth": "Mon Oct 19 09:10:07 2026",
+          "command": "<defunct>"
+        }
+      ]
+    }
+  ],
+  "wallMs": 5288,
+  "uptime": "9:10  up 9 days, 21:54, 3 users, load averages: 3.12 2.81 2.53",
+  "scope": "Presentation-only text scenario using the recorded 05→08 date; no OCR, full suite, persistence or lifecycle rerun; print emulation/PDF, not a human print check."
+}
