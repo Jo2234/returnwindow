@@ -1,0 +1,163 @@
+1
+00:00:00,350 --> 00:00:01,146
+One receipt.
+
+2
+00:00:01,146 --> 00:00:01,942
+Four items.
+
+3
+00:00:01,942 --> 00:00:03,136
+Different return rules.
+
+4
+00:00:03,136 --> 00:00:07,912
+ReturnWindow makes the deadlines visible, and keeps the evidence beside every decision.
+
+5
+00:00:09,017 --> 00:00:11,807
+Start with a receipt and the store policy.
+
+6
+00:00:11,807 --> 00:00:15,296
+You can upload a photo or PDF, or paste text.
+
+7
+00:00:15,296 --> 00:00:19,482
+This walkthrough uses a synthetic receipt and a clearly labelled demo date.
+
+8
+00:00:20,583 --> 00:00:23,646
+The sample is read by the actual local OCR engine.
+
+9
+00:00:23,646 --> 00:00:25,790
+Nothing is sent to a receipt service.
+
+10
+00:00:25,790 --> 00:00:30,384
+But local does not mean infallible: the purchase date has been read as the fifth
+
+11
+00:00:30,384 --> 00:00:30,996
+of October.
+
+12
+00:00:32,117 --> 00:00:37,781
+The earbuds policy allows fourteen days from purchase or delivery, so the app asks which
+
+13
+00:00:37,781 --> 00:00:38,536
+date applies.
+
+14
+00:00:38,536 --> 00:00:43,823
+Select delivery, enter the tenth of October, and the earbuds deadline becomes the twenty-fourth.
+
+15
+00:00:44,950 --> 00:00:47,856
+Open the full receipt to check the source.
+
+16
+00:00:47,856 --> 00:00:50,399
+The printed purchase date is the eighth.
+
+17
+00:00:50,399 --> 00:00:55,848
+Extracted fields are editable, so a confident OCR mistake does not have to become a
+
+18
+00:00:55,848 --> 00:00:56,938
+confident wrong deadline.
+
+19
+00:00:58,050 --> 00:01:00,603
+Correct the purchase date to the eighth.
+
+20
+00:01:00,603 --> 00:01:04,614
+The shirt moves from the fourth to the seventh of November.
+
+21
+00:01:04,614 --> 00:01:08,625
+The mug moves from the twenty-sixth to the twenty-ninth of October.
+
+22
+00:01:08,625 --> 00:01:11,178
+The delivery-based earbuds stay on the twenty-fourth.
+
+23
+00:01:12,283 --> 00:01:16,025
+Each item links to the exact policy passage behind its result.
+
+24
+00:01:16,025 --> 00:01:20,106
+The scarf is final sale, so it gets no invented return date.
+
+25
+00:01:20,106 --> 00:01:23,847
+Missing or unsupported rules also produce an explicit refusal to guess.
+
+26
+00:01:24,950 --> 00:01:27,753
+Download the three eligible reminders as a calendar file.
+
+27
+00:01:27,753 --> 00:01:31,802
+Each event keeps its item and deadline, with a reminder for nine a.m.
+
+28
+00:01:31,802 --> 00:01:33,671
+Singapore time on the preceding day.
+
+29
+00:01:34,783 --> 00:01:39,645
+The evidence pack brings the results, quoted passages, answers and correction history together.
+
+30
+00:01:39,645 --> 00:01:43,011
+Download the self-contained HTML, or open the print view.
+
+31
+00:01:43,011 --> 00:01:47,873
+The context stays with the dates instead of disappearing behind a calendar entry.
+
+32
+00:01:48,983 --> 00:01:52,202
+Reload and the case returns from local browser storage.
+
+33
+00:01:52,202 --> 00:01:54,706
+The receipt image is deliberately not retained.
+
+34
+00:01:54,706 --> 00:01:56,852
+Start over clears the saved case.
+
+35
+00:01:56,852 --> 00:02:01,502
+There is no account, backend, or API key needed to use the app.
+
+36
+00:02:02,617 --> 00:02:08,018
+The project began in an empty folder with the Devpost Learn Skill Pack.
+
+37
+00:02:08,018 --> 00:02:13,835
+Scope, product requirements, specification and the build checklist stay in the repository, alongside the
+
+38
+00:02:13,835 --> 00:02:15,082
+implementation and tests.
+
+39
+00:02:16,183 --> 00:02:20,527
+ReturnWindow is a bounded English-policy proof of concept, not legal advice.
+
+40
+00:02:20,527 --> 00:02:24,476
+Review the source and conditions before relying on a date.
+
+41
+00:02:24,476 --> 00:02:29,214
+One receipt, separate clocks, and an explanation you can take with you.

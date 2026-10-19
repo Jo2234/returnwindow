@@ -1,0 +1,21 @@
+{
+  "source_commit": "4c57cab5952b713ef5f68a354a09a5da8101aaa1",
+  "actual_calendar_events": 3,
+  "deadline_dates": [
+    "2026-10-24",
+    "2026-11-07",
+    "2026-10-29"
+  ],
+  "alarm_instants": [
+    "2026-10-23T01:00:00Z",
+    "2026-11-06T01:00:00Z",
+    "2026-10-28T01:00:00Z"
+  ],
+  "actual_html_contains_expected_dates_and_correction": true,
+  "calendar_client_import_claimed": false,
+  "print_client_claimed": false,
+  "build": "local production build exit0; source unchanged",
+  "capture": "actual Computer Use interactions and captured states, edited walkthrough",
+  "voice": "gpt-4o-mini-tts / cedar",
+  "video_sha256": "5a0eb76caae378de055e7e698ef61a86262e110fd5292b5c2bb66fabebced210"
+}

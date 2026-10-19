@@ -4,11 +4,27 @@ Know the last day to return each item, and the policy line that proves it.
 
 ReturnWindow is a local browser app for Singapore shoppers with mixed-item receipts. Add a receipt and the store's supplied policy, review separate item deadlines, answer one question when a clock is ambiguous, and correct extraction mistakes. Download calendar reminders and a printable evidence pack. Sample data is synthetic. Not legal advice.
 
-**Current status:**19Oct combined source6cd7b5c accepted for private integration; production build exited0 and13 asset/eight screen-print measurements completed, while the bounded harness remains FAIL/exit1 at cleanup. Separate post-exit cleanup was verified and master released0909; [the review](docs/process/evidence-notice-review-20261019.md) records the distinction. G3 OCR/PDF/kernel accepted. S3 local verification passed on 18 Oct 2026: 131 unit tests, 49 in each of three timezones, 13 OCR/adapter tests, production build and six E2E cases. G4 was accepted by the Astra quota-fallback lead after the separately reserved UI walkthrough. The worker and lead inspected actual desktop/mobile views; all Johan final review/release gates remain pending. The [test report](docs/test-report.md), [G4 review](docs/checkpoints/g4-review.md) and [integration handoff](docs/final-handoff.md) distinguish retained evidence from remaining checks. Native G4 download metadata succeeded (ICS3031B/HTML473344B), but its payload read was NOT COMPLETED after tab closure; acceptance uses the separate S3 actual file reads/independent parser/HTML/print checks, with no native-copy claim.
+## Demo
 
-The actual desktop workspace screenshot from the successful S3 production run at b702e4fe5deb639185dea3ea6ff891029aff0aac is retained on RP at `/tmp/basics-slot2-s3-shots/X7-workspace-1280x800.png`. It is not committed. Running the granted E2E command generates the local ignored `test-results/screens/X7-workspace-1280x800.png`; a fresh checkout has no screenshot at that path.
+The demo follows a real local OCR run on a **synthetic receipt**. The visible simulated date is 20 October 2026. Correcting the extracted purchase date from 5 to 8 October changes the shirt and mug deadlines while leaving delivery-based earbuds unchanged. The final-sale scarf gets no invented date.
 
-The [reference app map](devpost/app-map.html) follows an actual purchase-date correction into results and imageless persistence. Agent native desktop/mobile visual/navigation/focus checks passed on 19 Oct under the released 0858 grant; [the scoped review](docs/process/appmap-visual-review-20261019.md) preserves the tested artifact hash and network-capture limits. Johan viewing and the learning activity remain pending. See the [S4 audit](docs/process/s4-audit.md) and [technical video checklist](docs/video-checklist.md).
+![Separate deadlines and policy evidence](docs/submission-package/corrected-mug.png)
+
+- Read photos locally with Tesseract, extract PDF text, or paste a receipt.
+- Supply the store policy; inspect linked quotations and answer an ambiguous clock question.
+- Correct extracted fields and see which item dates change.
+- Export calendar reminders and a self-contained HTML evidence pack.
+- Restore one imageless local case after reload; Start over clears it.
+
+No account, backend, receipt-upload service or API key is needed. No generative model decides the return dates. Review the policy conditions before relying on a result; this is not legal advice.
+
+### Validation
+
+The accepted core passed **131 unit tests, 49 date/engine checks in each of three timezones, 13 OCR/adapter checks and 6 production browser tests**. A fresh local production build and actual demo walkthrough also exercised OCR, correction, downloads, restore and clear. These are synthetic-fixture results, not general OCR-accuracy or user-outcome claims.
+
+The 19 October evidence-layout build passed and its application measurements completed, but that bounded browser harness exited 1 at a defunct-process cleanup snapshot. Later process/group/port cleanup was independently verified. The failure is preserved in the [review](docs/process/evidence-notice-review-20261019.md); it is not relabelled as a passing test batch. See [full test results](docs/test-report.md).
+
+The [reference app map](devpost/app-map.html) explains the correction-to-results path. It records agent checks separately from Johan's own activities.
 
 ## Run locally
 
@@ -64,6 +80,6 @@ Claude Opus 5.5 HIGH authored the original plan and G1/G2 reviews. GPT-6 Astra H
 
 React/Vite/TypeScript provide the interface and build; Tesseract/PDF.js provide local extraction; Zod validates storage. Vitest/fast-check test the kernel, dev-only ical.js/jsdom independently parse exports, and Playwright tests production Chromium. [Licences and provenance](docs/licenses.md) record the now-substantiated Apache-2.0 model chain separately from npm-package MIT metadata, preserve caniuse-lite CC-BY4.0 / dev-only mdn-data CC0 notices and record the completed13-asset source/public/dist comparisons separately from the raw0909 harness cleanup failure. See [supplementary notices](THIRD_PARTY_NOTICES.md). ical.js MPL-2.0 is dev-only. [MIT licence](LICENSE), ©2026 Jo2234.
 
-The repository stays private until Johan authorizes release. Video/narration, description, “what I learned”, personal review, Calendar import, public release and Devpost submission are human gates. Nothing has been registered, posted, deployed or publicly submitted by this worker.
+Johan authorized this public source copy and demo preparation on 19 October 2026. The original development archive remains private. The Devpost entry remains a draft until Johan submits it. Personal hands-on/Calendar/print checkpoints in the historical records are not silently marked complete by publication. See the [submission preparation record](docs/submission-package/preparation-record.md).
 
 Private19Oct [setup/package guide](docs/delivery-20261019/README-private-delivery.md) and delivery drafts: [release notes](docs/delivery-20261019/release-notes.md), [storyboard](docs/delivery-20261019/demo-storyboard.md), [submission draft](docs/delivery-20261019/submission-draft.md). These retain Astra draft attribution, Sol factual amendments and Johan personal placeholders; no publication or human sign-off is claimed.
