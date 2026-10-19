@@ -9,3 +9,5 @@ The draft's reflection was selected under Johan's instruction to choose the best
 Video: actual Computer Use captures of the local production app, edited into a narrated walkthrough. Synthetic receipt and visible simulated date. OpenAI gpt-4o-mini-tts Cedar narration; not Johan's voice. No third-party music.
 
 Core technical source remains the accepted 19 October candidate; this update changes documentation and synthetic screenshots only.
+
+Demo link: https://youtu.be/kNPtMSZUJ-I . Public source copy: https://github.com/Jo2234/returnwindow . Upload/publication verification receipts are maintained separately from this source commit.

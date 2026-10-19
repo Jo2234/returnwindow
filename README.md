@@ -6,6 +6,8 @@ ReturnWindow is a local browser app for Singapore shoppers with mixed-item recei
 
 ## Demo
 
+[Watch the 2½-minute narrated walkthrough](https://youtu.be/kNPtMSZUJ-I). OpenAI Cedar narration and English captions; actual local product captures with synthetic data.
+
 The demo follows a real local OCR run on a **synthetic receipt**. The visible simulated date is 20 October 2026. Correcting the extracted purchase date from 5 to 8 October changes the shirt and mug deadlines while leaving delivery-based earbuds unchanged. The final-sale scarf gets no invented date.
 
 ![Separate deadlines and policy evidence](docs/submission-package/corrected-mug.png)
